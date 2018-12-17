@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "746960917853",
+    "firebase_url": "https://neomu-13949.firebaseio.com",
+    "project_id": "neomu-13949",
+    "storage_bucket": "neomu-13949.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746960917853:android:6e929ef3e42a12e1",
+        "android_client_info": {
+          "package_name": "com.neomu.neomu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746960917853-vpdtpec3i0jhdqucpnjk19l0b8k6d9jv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neomu.neomu",
+            "certificate_hash": "5c05c5d8bbb530d46dd617d53b853b74ca702806"
+          }
+        },
+        {
+          "client_id": "746960917853-1s0u4ihrjduknes1kgo2ksq04tiq5c4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcKuvtwqYSozeUzeRy4vGZkququ0_nkK0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746960917853-1s0u4ihrjduknes1kgo2ksq04tiq5c4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
