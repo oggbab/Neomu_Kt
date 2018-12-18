@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="main_loginBtn">
+        <item name="android:height">50dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:text">로 그 인</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>
