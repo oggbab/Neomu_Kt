@@ -65,7 +65,8 @@ public class SpalshActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     //그냥 종료하는걸로 일단
-                    finish();
+//                    finish();
+
                 }
             });
             builder.create().show();

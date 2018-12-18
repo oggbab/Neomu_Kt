@@ -13,8 +13,8 @@
 <!--프리뷰랑 실제 화면이랑 차이 있음(마진)-->
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:src="@drawable/logo"
         />
 
