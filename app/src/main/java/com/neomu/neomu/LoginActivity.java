@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 //로그인 액티비티
 public class LoginActivity extends AppCompatActivity {
 
