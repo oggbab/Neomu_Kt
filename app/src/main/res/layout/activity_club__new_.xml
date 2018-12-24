@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#252837"
+    android:orientation="vertical"
+    android:id="@+id/scroll"
+    tools:context=".JoinDetailActivity">
+
+    <!--상단영역-->
+    <LinearLayout
+        style="@style/club_new_top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/club_new_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="모임 만들기" />
+
+        <EditText
+            style="@style/club_new_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/round_club"
+            android:hint="모임명을 입력해주세요" />
+
+    </LinearLayout>
+
+    <!--본문 시작-->
+
+    <!--지도 검색-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/club_new_text_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location" />
+
+        <EditText
+            android:id="@+id/club_new_map_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/club_new_location_editText"
+            android:text="장소를 입력해주세요"
+            />
+
+    </LinearLayout>
+
+
+    <!--카테고리-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/club_new_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+<!--
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/club_new_chip_group2"
+                style="@style/Widget.MaterialComponents.ChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/chip_style">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사진"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="스포츠"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문화공연"
+                    android:textAlignment="center"
+
+                    />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="독서"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="게임"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사교"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반려동물"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기타"
+                    android:checked="true"
+                    android:textAlignment="center" />
+
+            </com.google.android.material.chip.ChipGroup>
+-->
+
+
+        </LinearLayout>
+
+
+        <!--배경 이미지-->
+
+<!--        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/club_new_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Background" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#B5B5B5" />
+
+        </LinearLayout>-->
+
+
+
+        <!--가격대-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/club_new_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price" />
+            
+
+        </LinearLayout>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--소개-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/club_new_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Introduce" />
+
+
+            <EditText
+                android:id="@+id/club_new_intro"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/round_club_intro"
+                android:hint="소개글"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/club_new_btn"
+            style="@style/main_loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/yellow_btn"
+            android:text="모임 만들기" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -4,14 +4,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
@@ -25,7 +29,8 @@ public class SpalshActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spalsh);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         linearLayout = findViewById(R.id.splash);
 
@@ -50,7 +55,8 @@ public class SpalshActivity extends AppCompatActivity {
 
 
     }
-    void displayMessage(){
+
+    void displayMessage() {
 
         //콘솔 리모트컨픽 설정 가져오기
         String Splash_background = mFirebaseRemoteConfig.getString("Splash_background");
@@ -59,7 +65,7 @@ public class SpalshActivity extends AppCompatActivity {
 
         linearLayout.setBackgroundColor(Color.parseColor(Splash_background));
 
-        if(caps){
+        if (caps) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(Splash_message).setPositiveButton("확인", new DialogInterface.OnClickListener() {
                 @Override
@@ -70,9 +76,9 @@ public class SpalshActivity extends AppCompatActivity {
                 }
             });
             builder.create().show();
-        }else{
+        } else {
             //caps가 false일경우 액티비티 이동
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(SpalshActivity.this, LoginActivity.class));
         }
     }
 }
