@@ -1,105 +1,65 @@
 package com.neomu.neomu;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView leftMenu, centerIcon, rightSearch;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new MainFragment()).commit();
 
-        // 이미지 뷰
-        leftMenu = findViewById(R.id.leftMenu);
-        centerIcon = findViewById(R.id.centerIcon);
-        rightSearch = findViewById(R.id.rightSearch);
+        // 1-1 툴바, 네비게이션 뷰
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        leftMenu.setOnClickListener(new menuBar());
-        centerIcon.setOnClickListener(new menuBar());
-        rightSearch.setOnClickListener(new menuBar());
+        drawerLayout =  findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
 
+        // 2-1 네비게이션뷰 클릭
+        NavigationView navigationView = findViewById(R.id.main_navigationview);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-        // 탭 레이아웃, 뷰페이저 2-1
-        TabLayout tabLayout = findViewById(R.id.mainTab);
-        ViewPager viewPager = findViewById(R.id.mainView);
+                switch (menuItem.getItemId()) {
+                    case R.id.first:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new MainFragment()).commit();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.second:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new MypageFragment()).commit();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.third:
+                        Toast.makeText(getApplicationContext(), "지도 띄울게요", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.forth:
+                        Toast.makeText(getApplicationContext(), "옵션 설정해요", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
 
-        Fragment[] arrFragment = new Fragment[3];
-        arrFragment[0] = new PopularFragment();
-        arrFragment[1] = new NewFragment();
-        arrFragment[2] = new NearFragment();
-
-        MyPageAdapter adapter = new MyPageAdapter(getSupportFragmentManager(), arrFragment);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
-
-    }
-
-    // 1-1
-    class menuBar implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            switch(v.getId()) {
-                case R.id.leftMenu:
-                    Toast.makeText(MainActivity.this, "메뉴버튼 눌럿어요", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.centerIcon:
-                    Toast.makeText(MainActivity.this, "이모티콘 눌렀어요", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.rightSearch:
-                    Toast.makeText(MainActivity.this, "검색 버튼 눌렀어요", Toast.LENGTH_SHORT).show();
-                    break;
+                }
+                return false;
             }
-        }
-    }
-
-    // 2-1
-    private class MyPageAdapter extends FragmentPagerAdapter {
-
-        private Fragment[] arrFragment;
-
-        public MyPageAdapter(FragmentManager fm, Fragment[] arrFragment) {
-            super(fm);
-            this.arrFragment = arrFragment;
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            return arrFragment[i];
-        }
-
-        @Override
-        public int getCount() {
-            return arrFragment.length;
-
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "인기있는";
-                case 1:
-                    return "새로운";
-                case 2:
-                    return "가까운";
-                default:
-                    return "";
-            }
-        }
+        });
     }
 }
