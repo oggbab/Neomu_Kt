@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">NeoMu</string>
+<<<<<<< HEAD
     <string name="title_activity_maps">Map</string>
+=======
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> e23bfceed370eec5c3d9ff94c1de5898bad4440a
 </resources>

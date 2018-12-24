@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+=======
+>>>>>>> e23bfceed370eec5c3d9ff94c1de5898bad4440a
 //로그인 액티비티
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
