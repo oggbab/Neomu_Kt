@@ -30,14 +30,12 @@
         <activity android:name=".JoinActivity" />
         <activity android:name=".JoinDetailActivity" />
         <activity android:name=".Club_New_Activity" />
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>

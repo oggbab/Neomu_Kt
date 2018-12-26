@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="My">
+        <menu>
+            <item
+                android:id="@+id/first"
+                android:icon="@android:mipmap/sym_def_app_icon"
+                android:title="홈으로"
+                />
+            <item
+                android:id="@+id/second"
+                android:icon="@android:drawable/btn_star"
+                android:title="마이페이지"
+                />
+            <item
+                android:id="@+id/third"
+                android:icon="@android:drawable/ic_input_add"
+                android:title="글 작성"
+                />
+        </menu>
+    </item>
+
+    <item
+        android:title="Option">
+        <menu>
+            <item
+                android:id="@+id/forth"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="환경설정"
+                />
+        </menu>
+    </item>
+</menu>
