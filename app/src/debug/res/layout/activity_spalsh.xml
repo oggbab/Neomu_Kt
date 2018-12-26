@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SpalshActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#6981EC"
+    android:id="@+id/splash">
+
+<!--프리뷰랑 실제 화면이랑 차이 있음(마진)-->
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="너\u0026무"
+        android:fontFamily="@font/serif_b"
+        android:textSize="50sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="-30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[너는.모르는.무언가]"
+        android:fontFamily="@font/serif_r"
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="-50dp"
+        />
+
+</LinearLayout>
