@@ -14,8 +14,6 @@ import android.widget.LinearLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
@@ -79,6 +77,7 @@ public class SpalshActivity extends AppCompatActivity {
         } else {
             //caps가 false일경우 액티비티 이동
             startActivity(new Intent(SpalshActivity.this, LoginActivity.class));
+//            startActivity(new Intent(SpalshActivity.this, MainActivity.class));
         }
     }
 }

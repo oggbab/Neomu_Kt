@@ -12,15 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
-=======
->>>>>>> e23bfceed370eec5c3d9ff94c1de5898bad4440a
 //로그인 액티비티
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,10 +54,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
 
 
-
-
-        login_id =findViewById(R.id.login_id);
-        login_pw =findViewById(R.id.login_pw);
+        login_id = findViewById(R.id.login_id);
+        login_pw = findViewById(R.id.login_pw);
 
         login_btn = findViewById(R.id.login_btn);
         main_linkText = findViewById(R.id.main_linkText);
@@ -81,9 +75,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-/*            case R.id.main_linkText:
-                startActivity(new Intent(this, AuthActivity.class));*/
-
 
             case R.id.login_btn:
 
@@ -91,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String id = login_id.getText().toString().trim();
                 String pw = login_pw.getText().toString().trim();
 
-                if(id!=null||pw!=null) {
+                if (id != null || pw != null) {
 
                     firebaseAuth.signInWithEmailAndPassword(id, pw)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -99,15 +90,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-/*                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);*/
+//                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                    startActivity(intent);
                                     } else {
-                                        Toast.makeText(LoginActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "계정과 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
-                }else{
-                    Toast.makeText(LoginActivity.this,"모두 입력해주세요",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "모두 입력해주세요", Toast.LENGTH_LONG).show();
                 }
 
         }

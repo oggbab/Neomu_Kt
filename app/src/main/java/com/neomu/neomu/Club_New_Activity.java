@@ -1,11 +1,13 @@
 package com.neomu.neomu;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+
 
 public class Club_New_Activity extends AppCompatActivity {
 
@@ -21,8 +23,8 @@ public class Club_New_Activity extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(Club_New_Activity.this, MapsActivity.class);
-                startActivityForResult(intent,1000);
+              /*  intent = new Intent(Club_New_Activity.this, MapsActivity.class);
+                startActivityForResult(intent,1000);*/
 
 
             }

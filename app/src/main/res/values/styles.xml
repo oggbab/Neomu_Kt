@@ -3,8 +3,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorAccent">#FBCE02</item>
         <item name="colorControlHighlight">#2B65E3</item>
-    </style>-
-
+    </style>
 
 
     <!--메인 타이틀-->
@@ -119,7 +118,7 @@
         <item name="android:fontFamily" tools:ignore="NewApi">@font/sans_b</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">#252837</item>
-        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:layout_marginBottom">-5dp</item>
         <item name="android:gravity">center</item>
     </style>
     <!--클럽 Linear 백그라운드-->

@@ -8,90 +8,104 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-
-    <!--프리뷰랑 실제 화면이랑 차이 있음(마진)-->
-
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="80dp"
-        android:layout_gravity="center"
-        android:src="@drawable/logo" />
-
-    <TextView
-        style="@style/main_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/login_id"
-            style="@style/main_edittext"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round"
-            android:inputType="textWebEmailAddress"
-            android:hint="이메일 입력" />
-
-        <EditText
-            android:id="@+id/login_pw"
-            style="@style/main_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round"
-            android:inputType="textPassword"
-            android:hint="비밀번호 입력" />
-
-        <TextView
-            android:id="@+id/main_linkText"
-            style="@style/main_linkText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            />
-
-        <Button
-            android:id="@+id/login_btn"
-            style="@style/main_loginBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_btn"
-            android:text="로그인"
-
-            />
+            android:orientation="vertical">
 
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        >
+            <!--프리뷰랑 실제 화면이랑 차이 있음(마진)-->
 
-        <TextView
-            android:id="@+id/test_map"
-            style="@style/main_linkText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:text="맵 테스트"
-            />
-        <TextView
-            android:id="@+id/test_btn"
-            style="@style/main_linkText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="클럽 테스트"
-            />
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo" />
 
-    </LinearLayout>
+            <TextView
+                style="@style/main_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/login_id"
+                    style="@style/main_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round"
+                    android:inputType="textWebEmailAddress"
+                    android:hint="이메일 입력" />
+
+                <EditText
+                    android:id="@+id/login_pw"
+                    style="@style/main_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round"
+                    android:inputType="textPassword"
+                    android:hint="비밀번호 입력" />
+
+                <TextView
+                    android:id="@+id/main_linkText"
+                    style="@style/main_linkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onClick"
+                    />
+
+                <Button
+                    android:id="@+id/login_btn"
+                    style="@style/main_loginBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_btn"
+                    android:text="로그인"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:id="@+id/test_map"
+                    style="@style/main_linkText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="맵 테스트"
+                    />
+                <TextView
+                    android:id="@+id/test_btn"
+                    style="@style/main_linkText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="클럽 테스트"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

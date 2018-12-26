@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6981EC"
@@ -15,17 +14,18 @@
         android:layout_height="wrap_content"
         android:text="세부선택" />
 
+
+    <!--카테고리-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
+
         android:orientation="vertical">
 
-        <!--카테고리-->
-
         <TextView
-            style="@style/main_category_text"
+            style="@style/club_new_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Category" />
@@ -33,91 +33,104 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-<!--
+            android:orientation="horizontal">
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chip_group"
-                style="@style/Widget.MaterialComponents.ChipGroup"
+            <CheckBox
+                android:id="@+id/check_1"
+                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/chip_style"
-                app:chipSpacing="10dp">
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:textColor="#252837"
+                android:checked="true"
+                android:text="사진" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_photo"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="사진"
-                    android:textAlignment="center" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_sport"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="스포츠"
-                    android:textAlignment="center" />
+            <CheckBox
+                android:id="@+id/check_2"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:layout_marginLeft="5dp"
+                android:textColor="#252837"
+                android:text="스포츠" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_culture"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="문화공연"
-                    android:textAlignment="center"
+            <CheckBox
+                android:id="@+id/check_3"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:layout_marginLeft="5dp"
+                android:textColor="#252837"
+                android:text="문화공연" />
 
-                    />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_book"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="독서"
-                    android:textAlignment="center" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_game"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="게임"
-                    android:textAlignment="center" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_social"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="사교"
-                    android:textAlignment="center" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_pet"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="반려동물"
-                    android:textAlignment="center" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_etc"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="기타"
-                    android:textAlignment="center" />
-
-            </com.google.android.material.chip.ChipGroup>
-
--->
+            <CheckBox
+                android:id="@+id/check_4"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:layout_marginLeft="5dp"
+                android:textColor="#252837"
+                android:text="독서" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <CheckBox
+                android:id="@+id/check_5"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:textColor="#252837"
+                android:text="게임" />
 
+
+            <CheckBox
+                android:id="@+id/check_6"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:layout_marginLeft="5dp"
+                android:textColor="#252837"
+                android:text="사교" />
+
+            <CheckBox
+                android:id="@+id/check_7"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:layout_marginLeft="5dp"
+                android:textColor="#252837"
+                android:text="반려동물" />
+
+            <CheckBox
+                android:id="@+id/check_8"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/xml_button"
+                android:background="@drawable/xml_background"
+                android:layout_marginLeft="5dp"
+                android:textColor="#252837"
+                android:text="기타" />
+
+        </LinearLayout>
 
         <!--생년월일-->
         <TextView

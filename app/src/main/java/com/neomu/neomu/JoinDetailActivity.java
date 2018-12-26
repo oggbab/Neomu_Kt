@@ -86,6 +86,7 @@ public class JoinDetailActivity extends AppCompatActivity {
                     myRef.setValue(chip_result);
                     myRef = database.getReference("birth");
                     myRef.setValue(birth);
+                    Toast.makeText(JoinDetailActivity.this,intent.getExtras().getString("nickName")+"님 반가워요", Toast.LENGTH_SHORT).show();
 /*
 
                 }else{
