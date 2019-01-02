@@ -2,35 +2,41 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.neomu.neomu">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
+    <!-- 권한 지도 인터넷 -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_new"
         android:label="너\u0026무"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_new_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        <activity android:name=".SpalshActivity">
+        <activity android:name=".index.SpalshActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".AuthActivity" />
-        <activity android:name=".JoinActivity" />
-        <activity android:name=".JoinDetailActivity" />
-        <activity android:name=".Club_New_Activity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".index.LoginActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".index.AuthActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".index.JoinActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".club.Club_New_Activity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".club.MainActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".club.PostDetailActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".mypage.MypageActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".map.MapyActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

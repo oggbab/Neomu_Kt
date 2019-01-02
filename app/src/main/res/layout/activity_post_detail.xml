@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/bg" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <include
+                    android:id="@+id/postAuthorLayout"
+                    layout="@layout/include_post_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true" />
+
+                <include
+                    android:id="@+id/postTextLayout"
+                    layout="@layout/include_post_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:layout_below="@+id/postAuthorLayout"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                     />
+
+
+                <!--소개-->
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    android:orientation="horizontal">
+
+
+                    <!--칩스-->
+                    <TextView
+                        android:id="@+id/post_chip_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/check_background"
+                        android:fontFamily="@font/sans_r"
+                        android:text="#1만원"
+                        android:textSize="10sp"
+                        android:textColor="#B5B5B5" />
+
+                    <TextView
+                        android:id="@+id/post_chip_locattion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/check_background"
+                        android:fontFamily="@font/sans_r"
+                        android:textSize="10sp"
+                        android:text="#홍대입구역"
+                        android:textColor="#B5B5B5" />
+
+                    <TextView
+                        android:id="@+id/post_chip_people"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/check_background"
+                        android:fontFamily="@font/sans_r"
+                        android:textSize="10sp"
+                        android:text="#3명"
+                        android:textColor="#B5B5B5" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#B5B5B5" />
+
+        <LinearLayout
+            android:id="@+id/scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerPostComments"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@+id/commentForm"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                tools:listitem="@layout/item_comment" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#B5B5B5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/commentForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/postTextLayout"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="1.0">
+
+
+            <EditText
+                android:id="@+id/fieldCommentText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:hint="문의글을 달아주세요"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textColorHint="#B5B5B5" />
+
+            <Button
+                android:id="@+id/buttonPostPay"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.2"
+                android:textSize="10sp"
+                android:background="@drawable/round_btn_join"
+                android:text="Join" />
+
+            <Button
+                android:id="@+id/buttonPostComment"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.2"
+                android:background="@drawable/round_btn"
+                android:layout_marginLeft="5dp"
+                android:textSize="10sp"
+                android:text="Ask" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#6981EC"
     android:orientation="vertical"
-    tools:context=".AuthActivity">
+    tools:context=".index.AuthActivity">
 
 
     <ImageView
@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_btn"
+            android:layout_marginTop="20dp"
             android:text="회원 가입" />
 
     </LinearLayout>

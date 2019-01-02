@@ -6,29 +6,38 @@
         <menu>
             <item
                 android:id="@+id/first"
-                android:icon="@android:mipmap/sym_def_app_icon"
+                android:icon="@drawable/ic_home"
                 android:title="홈으로"
                 />
             <item
                 android:id="@+id/second"
-                android:icon="@android:drawable/btn_star"
+                android:icon="@drawable/ic_account"
                 android:title="마이페이지"
                 />
+
             <item
                 android:id="@+id/third"
-                android:icon="@android:drawable/ic_input_add"
-                android:title="글 작성"
+                android:icon="@drawable/ic_like"
+                android:title="즐겨찾기"
                 />
+
         </menu>
     </item>
 
     <item
-        android:title="Option">
+        android:title="Club">
         <menu>
+
             <item
-                android:id="@+id/forth"
-                android:icon="@android:drawable/ic_menu_manage"
-                android:title="환경설정"
+                android:id="@+id/fourth"
+                android:icon="@drawable/ic_location"
+                android:title="내주변"
+                />
+
+            <item
+                android:id="@+id/fifth"
+                android:icon="@drawable/ic_addclub"
+                android:title="클럽 만들기"
                 />
         </menu>
     </item>

@@ -33,6 +33,7 @@
         <item name="android:textAlignment" tools:ignore="NewApi">center</item>
         <item name="android:textColor">#252837</item>
         <item name="android:maxLines">1</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:maxLength">20</item>
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_marginTop">10dp</item>
@@ -44,7 +45,7 @@
         <item name="android:text">회원이 아니신가요? JOIN</item>
         <item name="android:fontFamily" tools:ignore="NewApi">@font/sans_b</item>
         <item name="android:textColor">#ffffff</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">30dp</item>
         <item name="android:gravity">center</item>
         <item name="android:linksClickable">true</item>
     </style>
@@ -54,6 +55,7 @@
         <item name="android:fontFamily" tools:ignore="NewApi">@font/sans_r</item>
         <item name="android:height">50dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">20dp</item>
     </style>
 
     <!--버튼 회원가입-->
@@ -134,6 +136,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:maxLength">20</item>
         <item name="android:layout_height">60dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>
@@ -165,6 +168,49 @@
         <item name="android:editable">false</item>
         <item name="android:colorAccent" tools:ignore="NewApi">#6981EC</item>
     </style>
+
+    <!--지도페이지 인풋창 -->
+    <style name="map_location">
+        <item name="android:fontFamily" tools:ignore="NewApi">@font/sans_r</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:hint">장소를 검색하세요</item>
+        <item name="android:drawableRight">@drawable/map_icon</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:layout_marginTop">-20dp</item>
+        <item name="android:editable">false</item>
+        <item name="android:colorAccent" tools:ignore="NewApi">#6981EC</item>
+    </style>
+
+
+    <!--메인-->
+    <!--백그라운드-->
+    <style name="main_top_bg">
+        <item name="android:background">#ffffff</item>
+    </style>
+
+    <!--프레그먼트 메뉴-->
+    <style name="main_top_menu">
+        <item name="android:fontFamily" tools:ignore="NewApi">@font/serif_b</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
+    <!--프레그먼트 본문 백그라운드-->
+    <style name="main_body_bg">
+        <item name="android:background">#2A2E43</item>
+    </style>
+
+    <!--프레그먼트 본문 제목-->
+    <style name="main_body_title">
+        <item name="android:fontFamily" tools:ignore="NewApi">@font/sans_b</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
 
 
 </resources>

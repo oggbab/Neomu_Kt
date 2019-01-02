@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#252837"
     android:orientation="vertical"
-    android:id="@+id/scroll"
-    tools:context=".JoinDetailActivity">
+    tools:context=".index.JoinDetailActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,6 +34,7 @@
                     android:text="모임 만들기" />
 
                 <EditText
+                    android:id="@+id/club_title"
                     style="@style/club_new_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,16 +61,14 @@
                     android:layout_height="wrap_content"
                     android:text="Location" />
 
-                <EditText
-                    android:id="@+id/club_new_map_editText"
+                <TextView
+                    android:id="@+id/club_location"
+                    style="@style/club_new_location_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/club_new_location_editText"
-                    android:text="장소를 입력해주세요"
-                    />
+                    android:text="장소를 입력해주세요" />
 
             </LinearLayout>
-
 
 
             <!--카테고리-->
@@ -94,98 +93,100 @@
 
                     <CheckBox
                         android:id="@+id/check_club_1"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
+                        android:layout_centerInParent="true"
                         android:background="@drawable/xml_background"
-                        android:textColor="#252837"
+                        android:button="@drawable/xml_button"
                         android:checked="true"
-                        android:text="사진" />
+                        android:text="사진"
+                        android:textColor="#252837" />
 
 
                     <CheckBox
                         android:id="@+id/check_club_2"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
-                        android:background="@drawable/xml_background"
+                        android:layout_centerInParent="true"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#252837"
-                        android:text="스포츠" />
+                        android:background="@drawable/xml_background"
+                        android:button="@drawable/xml_button"
+                        android:text="스포츠"
+                        android:textColor="#252837" />
 
                     <CheckBox
                         android:id="@+id/check_club_3"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
-                        android:background="@drawable/xml_background"
+                        android:layout_centerInParent="true"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#252837"
-                        android:text="문화공연" />
+                        android:background="@drawable/xml_background"
+                        android:button="@drawable/xml_button"
+                        android:text="문화공연"
+                        android:textColor="#252837" />
 
                     <CheckBox
                         android:id="@+id/check_club_4"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
-                        android:background="@drawable/xml_background"
+                        android:layout_centerInParent="true"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#252837"
-                        android:text="독서" />
+                        android:background="@drawable/xml_background"
+                        android:button="@drawable/xml_button"
+                        android:text="독서"
+                        android:textColor="#252837" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
                     <CheckBox
                         android:id="@+id/check_club_5"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
+                        android:layout_centerInParent="true"
                         android:background="@drawable/xml_background"
-                        android:textColor="#252837"
-                        android:text="게임" />
+                        android:button="@drawable/xml_button"
+                        android:text="게임"
+                        android:textColor="#252837" />
 
 
                     <CheckBox
                         android:id="@+id/check_club_6"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
-                        android:background="@drawable/xml_background"
+                        android:layout_centerInParent="true"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#252837"
-                        android:text="사교" />
+                        android:background="@drawable/xml_background"
+                        android:button="@drawable/xml_button"
+                        android:text="사교"
+                        android:textColor="#252837" />
 
                     <CheckBox
                         android:id="@+id/check_club_7"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
-                        android:background="@drawable/xml_background"
+                        android:layout_centerInParent="true"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#252837"
-                        android:text="반려동물" />
+                        android:background="@drawable/xml_background"
+                        android:button="@drawable/xml_button"
+                        android:text="반려동물"
+                        android:textColor="#252837" />
 
                     <CheckBox
                         android:id="@+id/check_club_8"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xml_button"
-                        android:background="@drawable/xml_background"
+                        android:layout_centerInParent="true"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#252837"
-                        android:text="기타" />
+                        android:background="@drawable/xml_background"
+                        android:button="@drawable/xml_button"
+                        android:text="기타"
+                        android:textColor="#252837" />
 
                 </LinearLayout>
 
@@ -195,8 +196,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="40dp">
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/club_new_text"
@@ -212,6 +213,77 @@
                 </LinearLayout>
 
 
+                <!--시간 날짜 선택-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/club_new_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Time/Date" />
+
+                        <TextView
+                            android:id="@+id/club_new_date_text"
+                            style="@style/club_new_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="2019.01.01"
+                            android:textColor="#484E6A" />
+
+                        <TextView
+                            android:id="@+id/club_new_time_text"
+                            style="@style/club_new_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="13:00"
+                            android:textColor="#484E6A" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <Button
+                            android:id="@+id/club_new_date_btn"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/round_price_btn"
+                            android:text="날짜 선택"
+                            android:textColor="#B5B5B5" />
+
+                        <Button
+                            android:id="@+id/club_new_time_btn"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/round_price_btn"
+                            android:text="시간 선택"
+                            android:textColor="#B5B5B5" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
 
                 <!--가격대-->
 
@@ -219,21 +291,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/club_new_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Price" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/club_new_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Price" />
+
+                        <TextView
+                            android:id="@+id/club_new_price_text"
+                            style="@style/club_new_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="3"
+                            android:textColor="#484E6A" />
+
+                        <TextView
+                            style="@style/club_new_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="천원"
+                            android:textColor="#484E6A" />
+
+                    </LinearLayout>
+
+
+                    <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
+                        android:id="@+id/numberPicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/round_price_btn"
+                        app:snp_maxValue="100000"
+                        app:snp_minValue="1000"
+                        app:snp_stepSize="1000"
+                        app:snp_updateInterval="100"
+                        app:snp_buttonPaddingLeft="30dp"
+                        app:snp_buttonPaddingRight="30dp"
+                        />
 
                 </LinearLayout>
 
-                <SeekBar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
                 <!--소개-->
 
@@ -244,21 +350,27 @@
                     android:orientation="vertical">
 
                     <TextView
+
                         style="@style/club_new_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Introduce" />
 
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
                     <EditText
                         android:id="@+id/club_new_intro"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:background="@drawable/round_club_intro"
-                        android:hint="소개글을 적어주세요"
-                        android:maxLines="3"
                         android:gravity="center"
-                        />
+                        android:hint="소개글을 적어주세요"
+                        android:textSize="14sp"
+                        android:maxLines="3" />
 
                 </LinearLayout>
 
