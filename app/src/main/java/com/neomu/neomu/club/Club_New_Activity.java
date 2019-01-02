@@ -12,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -30,11 +32,13 @@ import com.neomu.neomu.models.Post;
 import com.neomu.neomu.models.User;
 
 import java.sql.Array;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,15 +46,20 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Club_New_Activity extends AppCompatActivity{
 
     EditText map;
-    TextView et_location, price_text;
+    EditText et_location;
+    TextView price_text;
     Intent intent;
     Button mSubmitButton;
-    SeekBar price;
+    RadioGroup radio_category1,radio_category2;
+    RadioButton r1,r2,r3,r4,r5,r6,r7,r8;
     String category;
     ScrollableNumberPicker pricePicker;
+    String date;
+    String time;
 
     TextView club_new_date_text,club_new_time_text;
     Button club_new_date_btn,club_new_time_btn;
+
 
     EditText et_body, et_title;
     ImageView bg_img;
@@ -83,7 +92,7 @@ public class Club_New_Activity extends AppCompatActivity{
         // [END initialize_database_ref]
 
         et_title = findViewById(R.id.club_title);
-        et_location = findViewById(R.id.club_location);
+        et_location = findViewById(R.id.club_location_text);
         price_text = findViewById(R.id.club_new_price_text);
         et_body = findViewById(R.id.club_new_intro);
         mSubmitButton = findViewById(R.id.club_new_btn);
@@ -92,12 +101,46 @@ public class Club_New_Activity extends AppCompatActivity{
         club_new_time_text = findViewById(R.id.club_new_time_text);
 
         pricePicker = findViewById(R.id.numberPicker);
-/*        //체크박스
-        chkBoxs = new CheckBox[chkBoxIds.length];
-        for(int i = 0; i < chkBoxIds.length; i++) {
-            chkBoxs[i] = (CheckBox) findViewById(chkBoxIds[i]);
-            chkBoxs[i].setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) this);
-        }*/
+
+
+        //라디오
+
+        r1 = findViewById(R.id.check_club_1);
+        r2 = findViewById(R.id.check_club_2);
+        r3 = findViewById(R.id.check_club_3);
+        r4 = findViewById(R.id.check_club_4);
+        r5 = findViewById(R.id.check_club_5);
+        r6 = findViewById(R.id.check_club_6);
+        r7 = findViewById(R.id.check_club_7);
+        r8 = findViewById(R.id.check_club_8);
+
+        //라디오 그룹 설정
+        radio_category1 = (RadioGroup) findViewById(R.id.radio_category1);
+        radio_category2 = (RadioGroup) findViewById(R.id.radio_category2);
+        radio_category1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+                if(i == R.id.check_club_1) category = (String) r1.getText();
+                else if(i == R.id.check_club_2) category = (String) r2.getText();
+                else if(i == R.id.check_club_2) category = (String) r3.getText();
+                else if(i == R.id.check_club_2) category = (String) r4.getText();
+
+            }
+        });
+        radio_category2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+                if(i == R.id.check_club_5) category = (String) r5.getText();
+                else if(i == R.id.check_club_6) category = (String) r6.getText();
+                else if(i == R.id.check_club_7) category = (String) r7.getText();
+                else if(i == R.id.check_club_8) category = (String) r8.getText();
+
+            }
+        });
+
+
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +157,11 @@ public class Club_New_Activity extends AppCompatActivity{
             }
         });
 
+        Intent mapyIntent = getIntent();
+//        String a = mapyIntent.getStringExtra("markerTitle" + "markerSnippet");
+        String a = mapyIntent.getStringExtra("location");
+//        String a = mapyIntent.getStringExtra("club_title");
+        et_location.setText(a);
     }
 
     //다이얼로그 메소드
@@ -177,9 +225,10 @@ public class Club_New_Activity extends AppCompatActivity{
         final String title = et_title.getText().toString();
         final String body = et_body.getText().toString();
         final String location = et_location.getText().toString();
-        final String price_result = price_text.getText().toString();
-        final String category_result = "카테고리";
-//        final String category_result = String.valueOf(chkBoxs[chkBoxs.length]);
+        final String price_result = price_text.getText().toString()+"천원";
+        final String category_result = category;
+        date = club_new_date_text.getText().toString();
+        time = club_new_time_text.getText().toString();
 
 
         //공백일때 보여질 메세지 설정
@@ -203,7 +252,7 @@ public class Club_New_Activity extends AppCompatActivity{
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // Get user value
                         User user = dataSnapshot.getValue(User.class);
-                        writeNewPost(userId, user.nickName, title, body, price_result, category_result);
+                        writeNewPost(userId, user.nickName, title, body, price_result, category_result,location,date,time);
                         finish();
                     }
 
@@ -213,15 +262,14 @@ public class Club_New_Activity extends AppCompatActivity{
                     }
 
                 });
-        // [END single_value_read]
     }
 
 
     // 글쓰기
-    private void writeNewPost(String userId, String nickName, String title, String body, String price_result, String category) {
+    private void writeNewPost(String userId, String nickName, String title, String body, String price_result, String category, String location, String date, String time) {
 
         String key = mDatabase.child("posts").push().getKey();
-        Post post = new Post(userId, nickName, title, body, price_result, category);
+        Post post = new Post(userId, nickName, title, body, price_result, category,location,date,time);
         Map<String, Object> postValues = post.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();

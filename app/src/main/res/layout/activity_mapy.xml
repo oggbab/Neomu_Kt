@@ -60,7 +60,13 @@
                 android:background="@drawable/round_club"
                 android:textColorHint="#B5B5B5"
                 android:textSize="15sp"
-                android:hint="모임명을 입력해주세요" />
+                android:hint="모임장소 검색하기" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="넘기기"
+                android:id="@+id/btnSend"/>
 
         </LinearLayout>
         </LinearLayout>

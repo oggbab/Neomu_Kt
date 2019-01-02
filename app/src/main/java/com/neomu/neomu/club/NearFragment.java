@@ -13,7 +13,7 @@ public class NearFragment extends MainFragment {
     public Query getQuery(DatabaseReference databaseReference) {
 
         Query recentPostsQuery = databaseReference.child("posts")
-                .orderByChild("likeCount");
+                .limitToFirst(100);
 
         return recentPostsQuery;
     }

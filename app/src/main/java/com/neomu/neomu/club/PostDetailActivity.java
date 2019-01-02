@@ -73,7 +73,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 .child("post-comments").child(mPostKey);
 
         // Initialize Views
-        mAuthorView = findViewById(R.id.postAuthor);
+        mAuthorView = findViewById(R.id.postCategory);
         mTitleView = findViewById(R.id.postTitle);
         mBodyView = findViewById(R.id.postBody);
         mCommentField = findViewById(R.id.fieldCommentText);

@@ -58,43 +58,19 @@
                     android:layout_marginTop="-5dp"
                     android:orientation="horizontal">
 
+                        <include layout="@layout/include_post_infor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_below="@+id/postAuthorLayout"
+                            />
 
-                    <!--칩스-->
-                    <TextView
-                        android:id="@+id/post_chip_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/check_background"
-                        android:fontFamily="@font/sans_r"
-                        android:text="#1만원"
-                        android:textSize="10sp"
-                        android:textColor="#B5B5B5" />
-
-                    <TextView
-                        android:id="@+id/post_chip_locattion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="5dp"
-                        android:background="@drawable/check_background"
-                        android:fontFamily="@font/sans_r"
-                        android:textSize="10sp"
-                        android:text="#홍대입구역"
-                        android:textColor="#B5B5B5" />
-
-                    <TextView
-                        android:id="@+id/post_chip_people"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="5dp"
-                        android:background="@drawable/check_background"
-                        android:fontFamily="@font/sans_r"
-                        android:textSize="10sp"
-                        android:text="#3명"
-                        android:textColor="#B5B5B5" />
-
+                        <include layout="@layout/include_post_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_below="@+id/postAuthorLayout"
+                            />
 
                 </LinearLayout>
 

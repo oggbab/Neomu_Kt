@@ -3,8 +3,12 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorAccent">#FBCE02</item>
         <item name="colorControlHighlight">#2B65E3</item>
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
     </style>
 
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/common_google_signin_btn_text_dark_disabled</item>
+    </style>
 
     <!--메인 타이틀-->
     <style name="main_title">
@@ -162,8 +166,7 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:hint">장소를 검색하세요</item>
-        <item name="android:drawableRight">@drawable/map_icon</item>
+        <item name="android:drawableRight">@drawable/ic_location</item>
         <item name="android:layout_marginTop">-20dp</item>
         <item name="android:editable">false</item>
         <item name="android:colorAccent" tools:ignore="NewApi">#6981EC</item>
@@ -175,7 +178,6 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:hint">장소를 검색하세요</item>
         <item name="android:drawableRight">@drawable/map_icon</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:layout_marginTop">-20dp</item>

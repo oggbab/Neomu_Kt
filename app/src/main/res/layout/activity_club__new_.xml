@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="#252837"
     android:orientation="vertical"
-    tools:context=".index.JoinDetailActivity">
+    tools:context=".club.Club_New_Activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -61,12 +61,14 @@
                     android:layout_height="wrap_content"
                     android:text="Location" />
 
-                <TextView
-                    android:id="@+id/club_location"
+                <EditText
+                    android:id="@+id/club_location_text"
                     style="@style/club_new_location_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="장소를 입력해주세요" />
+                    android:drawableTint="#6981EC"
+                    android:gravity="left"
+                    android:text="홍대입구 4번 출구" />
 
             </LinearLayout>
 
@@ -77,7 +79,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-
                 android:orientation="vertical">
 
                 <TextView
@@ -86,12 +87,16 @@
                     android:layout_height="wrap_content"
                     android:text="Category" />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/radio_category1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
 
-                    <CheckBox
+                    >
+
+
+                    <RadioButton
                         android:id="@+id/check_club_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -100,10 +105,11 @@
                         android:button="@drawable/xml_button"
                         android:checked="true"
                         android:text="사진"
+                        android:layout_weight="1"
                         android:textColor="#252837" />
 
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/check_club_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -112,9 +118,10 @@
                         android:background="@drawable/xml_background"
                         android:button="@drawable/xml_button"
                         android:text="스포츠"
+                        android:layout_weight="1"
                         android:textColor="#252837" />
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/check_club_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -123,9 +130,10 @@
                         android:background="@drawable/xml_background"
                         android:button="@drawable/xml_button"
                         android:text="문화공연"
+                        android:layout_weight="1"
                         android:textColor="#252837" />
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/check_club_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -134,18 +142,21 @@
                         android:background="@drawable/xml_background"
                         android:button="@drawable/xml_button"
                         android:text="독서"
+                        android:layout_weight="1"
                         android:textColor="#252837" />
 
-                </LinearLayout>
+                </RadioGroup>
 
-                <LinearLayout
+                <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:id="@+id/radio_category2"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/check_club_5"
+                        android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
@@ -155,7 +166,7 @@
                         android:textColor="#252837" />
 
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/check_club_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -166,7 +177,7 @@
                         android:text="사교"
                         android:textColor="#252837" />
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/check_club_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -177,7 +188,7 @@
                         android:text="반려동물"
                         android:textColor="#252837" />
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/check_club_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -188,7 +199,7 @@
                         android:text="기타"
                         android:textColor="#252837" />
 
-                </LinearLayout>
+                </RadioGroup>
 
 
                 <!--배경 이미지-->

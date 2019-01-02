@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -60,6 +62,10 @@ public class MapyActivity extends AppCompatActivity
 
     private GoogleMap mGoogleMap = null;
     private Marker currentMarker = null;
+
+    String locate_re;
+
+    EditText club_title;
     Intent intent;
 
     private static final String TAG = "googlemap_example";
@@ -90,6 +96,10 @@ public class MapyActivity extends AppCompatActivity
     // (참고로 Toast에서는 Context가 필요했습니다.)
 
     DrawerLayout drawerLayout;
+
+    Button btnSend;
+    String markerTitle;
+    String markerSnippet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +174,24 @@ public class MapyActivity extends AppCompatActivity
                 return false;
             }
         });
+
+        btnSend = findViewById(R.id.btnSend);
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                markerTitle = getCurrentAddress(currentPosition);
+                markerSnippet = "위도:" + String.valueOf(location.getLatitude())
+                        + " 경도:" + String.valueOf(location.getLongitude());
+
+                Intent intent = new Intent(MapyActivity.this, Club_New_Activity.class);
+//                intent.putExtra("markerTitle", markerTitle);
+//                intent.putExtra("markerSnippet", markerSnippet);
+                intent.putExtra("location", "홍대입구역");
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -182,8 +210,8 @@ public class MapyActivity extends AppCompatActivity
                         = new LatLng(location.getLatitude(), location.getLongitude());
 
 
-                String markerTitle = getCurrentAddress(currentPosition);
-                String markerSnippet = "위도:" + String.valueOf(location.getLatitude())
+                markerTitle = getCurrentAddress(currentPosition);
+                markerSnippet = "위도:" + String.valueOf(location.getLatitude())
                         + " 경도:" + String.valueOf(location.getLongitude());
 
                 Log.d(TAG, "onLocationResult : " + markerSnippet);
