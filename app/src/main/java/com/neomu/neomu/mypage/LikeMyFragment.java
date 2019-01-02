@@ -13,9 +13,9 @@ public class LikeMyFragment extends MyMainFragment{
     public Query getQuery(DatabaseReference databaseReference) {
 
         String myUserId = getUid();
-        Query myTopPostsQuery = databaseReference.child("user-posts").child(myUserId)
-                .orderByChild("starCount");
+        Query myLikePostsQuery = databaseReference.child("posts")
+                .orderByChild("likeCount").startAt(1);
 
-        return myTopPostsQuery;
+        return myLikePostsQuery;
     }
 }

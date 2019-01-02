@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="#6981EC"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".index.LoginActivity">
 
     <ScrollView
@@ -45,10 +47,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
                 <EditText
                     android:id="@+id/login_id"
                     style="@style/main_edittext"
@@ -56,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/round"
                     android:inputType="textWebEmailAddress"
+                    android:text="1bv@gmail.com"
                     android:hint="이메일 입력" />
 
                 <LinearLayout
@@ -70,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/round"
                     android:inputType="textPassword"
+                    android:text="123456"
                     android:hint="비밀번호 입력" />
 
 

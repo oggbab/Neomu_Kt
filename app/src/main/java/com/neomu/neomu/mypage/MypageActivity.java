@@ -3,7 +3,6 @@ package com.neomu.neomu.mypage;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -41,9 +40,8 @@ public class MypageActivity extends AppCompatActivity {
         };
         private final String[] mFragmentNames = new String[]{
                 "참여중","완료한","즐겨찾기"
-        };/*        private final int[] mFragmentNames = new int[]{
-                R.drawable.ic_join,
-        };*/
+        };
+
         @Override
         public Fragment getItem(int position) {
             return mFragments[position];
@@ -96,10 +94,12 @@ public class MypageActivity extends AppCompatActivity {
                     case R.id.first:
                         intent = new Intent(MypageActivity.this, MainActivity.class);
                         startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.second:
                         intent = new Intent(MypageActivity.this, MypageActivity.class);
                         startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.third:
                         Toast.makeText(getApplicationContext(), "즐겨찾기 설정해요", Toast.LENGTH_SHORT).show();

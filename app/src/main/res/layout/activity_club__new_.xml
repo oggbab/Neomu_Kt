@@ -41,6 +41,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
                     android:background="@drawable/round_club"
+                    android:text="모임테스트중"
                     android:hint="모임명을 입력해주세요" />
 
             </LinearLayout>
@@ -68,7 +69,8 @@
                     android:layout_height="wrap_content"
                     android:drawableTint="#6981EC"
                     android:gravity="left"
-                    android:text="홍대입구 4번 출구" />
+                    android:hint="모임장소"
+                    android:text="" />
 
             </LinearLayout>
 
@@ -144,6 +146,7 @@
                         android:text="독서"
                         android:layout_weight="1"
                         android:textColor="#252837" />
+
 
                 </RadioGroup>
 
@@ -341,13 +344,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/round_price_btn"
+                        app:snp_buttonPaddingLeft="30dp"
+                        app:snp_buttonPaddingRight="30dp"
                         app:snp_maxValue="100000"
                         app:snp_minValue="1000"
                         app:snp_stepSize="1000"
-                        app:snp_updateInterval="100"
-                        app:snp_buttonPaddingLeft="30dp"
-                        app:snp_buttonPaddingRight="30dp"
-                        />
+                        app:snp_updateInterval="100" />
 
                 </LinearLayout>
 
@@ -380,6 +382,7 @@
                         android:background="@drawable/round_club_intro"
                         android:gravity="center"
                         android:hint="소개글을 적어주세요"
+                        android:text="모임테스트중"
                         android:textSize="14sp"
                         android:maxLines="3" />
 

@@ -45,6 +45,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
     private TextView mAuthorView;
     private TextView mTitleView;
     private TextView mBodyView;
+    private TextView postLocation,postPrice,postDate,postTime;
     private EditText mCommentField;
     private Button mCommentButton;
     private RecyclerView mCommentsRecycler;
@@ -79,6 +80,10 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         mCommentField = findViewById(R.id.fieldCommentText);
         mCommentButton = findViewById(R.id.buttonPostComment);
         mCommentsRecycler = findViewById(R.id.recyclerPostComments);
+        postLocation = findViewById(R.id.postLocation);
+        postPrice = findViewById(R.id.postPrice);
+        postDate = findViewById(R.id.postDate);
+        postTime = findViewById(R.id.postTime);
 
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -97,9 +102,14 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 // Get Post object and use the values to update the UI
                 Post post = dataSnapshot.getValue(Post.class);
                 // [START_EXCLUDE]
-                mAuthorView.setText(post.author);
+                mAuthorView.setText(post.category);
                 mTitleView.setText(post.title);
                 mBodyView.setText(post.body);
+                postLocation.setText("#"+"홍대입구역");
+//                postLocation.setText("#"+post.location);
+                postPrice.setText("#"+post.price+"천원");
+                postDate.setText(post.date);
+                postTime.setText(post.time);
                 // [END_EXCLUDE]
             }
 
@@ -158,7 +168,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                             // Create new comment object
                             String commentText = mCommentField.getText().toString();
                         if(commentText!=null){
-                            Comment comment = new Comment(authorName, uid, commentText);
+                            Comment comment = new Comment(uid,authorName, commentText);
                             // Push the comment, it will appear in the list
                             mCommentsReference.push().setValue(comment);
                         }else{
@@ -302,7 +312,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         @Override
         public void onBindViewHolder(CommentViewHolder holder, int position) {
             Comment comment = mComments.get(position);
-            holder.authorView.setText(comment.author);
+            holder.authorView.setText(comment.nickName+" 님:");
             holder.bodyView.setText(comment.text);
         }
 

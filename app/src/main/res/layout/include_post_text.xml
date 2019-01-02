@@ -23,7 +23,6 @@
         android:id="@+id/postBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
         android:layout_marginTop="-20dp"
         android:fontFamily="@font/sans_r"
         android:text="포레스트 검프를 보러갑니다. 홍대입구이신분들 모두 모여요"

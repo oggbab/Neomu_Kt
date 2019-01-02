@@ -14,9 +14,10 @@ public class CompMyFragment extends MyMainFragment {
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
 
-        Query recentPostsQuery = databaseReference.child("posts")
-                .limitToFirst(100);
+        String myUserId = getUid();
+        Query compPostsQuery = databaseReference.child("posts").orderByChild("category").equalTo("게임");
 
-        return recentPostsQuery;
+
+        return compPostsQuery;
     }
 }

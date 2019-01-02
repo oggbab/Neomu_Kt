@@ -2,6 +2,7 @@ package com.neomu.neomu.club;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
+import com.neomu.neomu.mypage.MyMainFragment;
 
 
 public class NewFragment extends MainFragment {
@@ -14,7 +15,7 @@ public class NewFragment extends MainFragment {
     public Query getQuery(DatabaseReference databaseReference) {
 
         Query recentPostsQuery = databaseReference.child("posts")
-                .limitToFirst(100);
+                .limitToLast(5);
 
         return recentPostsQuery;
     }

@@ -14,14 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:background="@drawable/check_background"
         android:fontFamily="@font/sans_r"
         android:gravity="center_vertical"
         android:text="#홍대입구역"
         android:textColor="#B5B5B5"
         android:textSize="10sp"
-        tools:text="2만원" />
+        tools:text="#2만원" />
 
     <TextView
         android:id="@+id/postPeople"
@@ -36,7 +36,7 @@
         android:layout_centerInParent="true"
         android:background="@drawable/check_background"
         android:textSize="10sp"
-        android:text="#홍대입구역"
+        android:text="#3명"
         />
 
     <TextView
