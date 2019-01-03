@@ -2,7 +2,6 @@ package com.neomu.neomu.club;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
-import com.neomu.neomu.mypage.MyMainFragment;
 
 public class PopularFragment extends MainFragment {
 
@@ -12,11 +11,10 @@ public class PopularFragment extends MainFragment {
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
 
+        Query recentPostsQuery = databaseReference.child("posts")
+                .limitToFirst(100);
 
-        Query popularPostsQuery = databaseReference.child("posts")
-                .orderByChild("likeCount").startAt(1);
-
-        return popularPostsQuery;
+        return recentPostsQuery;
 
     }
 }

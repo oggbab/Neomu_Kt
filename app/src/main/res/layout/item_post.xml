@@ -58,33 +58,33 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/postAuthorLayout"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="-10dp"
             android:layout_marginLeft="10dp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="120dp"
-        >
-        <include
-            layout="@layout/include_post_infor"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/postAuthorLayout"
-            android:layout_alignParentLeft="true"
-            />
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
 
-        <include
-            layout="@layout/include_post_date"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/postAuthorLayout"
-            android:layout_alignParentLeft="true"
-            />
+            <include
+                layout="@layout/include_post_infor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/postAuthorLayout"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="34dp" />
 
-    </LinearLayout>
+            <include
+                layout="@layout/include_post_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/postAuthorLayout"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="34dp" />
 
+        </LinearLayout>
 
     </RelativeLayout>
 

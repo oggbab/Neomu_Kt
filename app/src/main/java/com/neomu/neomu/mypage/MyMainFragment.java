@@ -39,6 +39,7 @@ public class MyMainFragment extends Fragment {
     private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
+    LinearLayout mypage_sub,mypage_main;
 
     public MyMainFragment() {}
 

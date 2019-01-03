@@ -20,14 +20,15 @@
 
             <include layout="@layout/tool_bar" />
 
+
         </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="50dp"
             android:background="#252837"
-            android:orientation="vertical"
             android:gravity="center">
 
             <ImageView
@@ -36,8 +37,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/mypage_icon"
-                android:layout_marginTop="10dp"
+
                 />
+
 
             <TextView
                 android:id="@+id/mypage_activity_id"
@@ -46,12 +48,12 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/serif_b"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="10dp"
                 android:text="박상우님"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <com.google.android.material.tabs.TabLayout
@@ -67,9 +69,9 @@
 
         <!--완료한 즐겨찾기-->
         <LinearLayout
+            android:id="@+id/mypage_sub"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/container2"

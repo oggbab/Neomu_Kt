@@ -1,14 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorAccent">#FBCE02</item>
-        <item name="colorControlHighlight">#FBCE02</item>
+        <item name="colorControlHighlight">#2B65E3</item>
         <item name="drawerArrowStyle">@style/DrawerIcon</item>
     </style>
 
     <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">#000000</item>
-        <item name="android:src">@drawable/ic_menu</item>
+        <item name="color">@color/common_google_signin_btn_text_dark_disabled</item>
     </style>
 
     <!--메인 타이틀-->

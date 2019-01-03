@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,33 +36,31 @@ public class MainFragment extends Fragment {
     private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
-    FloatingActionButton fabNewPost;
 
     public MainFragment() {}
-
-
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_2_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         // [START create_database_reference]
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END create_database_reference]
 
-        mRecycler = rootView.findViewById(R.id.messagesList1);
+        mRecycler = rootView.findViewById(R.id.messagesList);
         mRecycler.setHasFixedSize(true);
 
-        fabNewPost = rootView.findViewById(R.id.fabNewPost);
-        fabNewPost.setOnClickListener(new View.OnClickListener() {
+
+        // 플로팅 버튼 클릭시
+        rootView.findViewById(R.id.fabNewPost).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),Club_New_Activity.class);
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), Club_New_Activity.class));
             }
         });
+
 
         return rootView;
     }
@@ -112,9 +109,9 @@ public class MainFragment extends Fragment {
 
                 // Determine if the current user has liked this post and set UI accordingly
                 if (model.like.containsKey(getUid())) {
-                    viewHolder.starView.setImageResource(R.drawable.ic_like_on);
-                } else {
                     viewHolder.starView.setImageResource(R.drawable.ic_like);
+                } else {
+                    viewHolder.starView.setImageResource(R.drawable.ic_like_on);
                 }
 
                 // Bind Post to ViewHolder, setting OnClickListener for the star button
