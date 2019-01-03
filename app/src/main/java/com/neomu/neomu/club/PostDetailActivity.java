@@ -1,6 +1,7 @@
 package com.neomu.neomu.club;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.neomu.neomu.R;
+import com.neomu.neomu.chat.ChatActivity;
 import com.neomu.neomu.models.Comment;
 import com.neomu.neomu.models.Post;
 import com.neomu.neomu.models.User;
@@ -45,11 +47,14 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
     private TextView mAuthorView;
     private TextView mTitleView;
     private TextView mBodyView;
-    private TextView postLocation,postPrice,postDate,postTime;
+    private TextView postLocation, postPrice, postDate, postTime;
     private EditText mCommentField;
     private Button mCommentButton;
     private RecyclerView mCommentsRecycler;
-
+    public String authorName, title,author;
+    public Button buttonPostJoin;
+    TextView nick_test;
+    String nick;
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -84,9 +89,25 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         postPrice = findViewById(R.id.postPrice);
         postDate = findViewById(R.id.postDate);
         postTime = findViewById(R.id.postTime);
+        nick_test = findViewById(R.id.nick_test);
 
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        //채팅방 여는 부분
+        findViewById(R.id.buttonPostJoin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                title=mTitleView.getText().toString();
+                nick=nick_test.getText().toString();
+                Intent intent = new Intent(PostDetailActivity.this, ChatActivity.class);
+                intent.putExtra("chatName", title);
+                intent.putExtra("userName", nick);
+                startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -94,33 +115,27 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
     public void onStart() {
         super.onStart();
 
-        // Add value event listener to the post
-        // [START post_value_event_listener]
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
                 Post post = dataSnapshot.getValue(Post.class);
-                // [START_EXCLUDE]
                 mAuthorView.setText(post.category);
                 mTitleView.setText(post.title);
-                mBodyView.setText(post.body);
-                postLocation.setText("#"+"홍대입구역");
+                postLocation.setText("#" + "홍대입구역");
 //                postLocation.setText("#"+post.location);
-                postPrice.setText("#"+post.price+"천원");
+                postPrice.setText("#" + post.price + "천원");
                 postDate.setText(post.date);
                 postTime.setText(post.time);
-                // [END_EXCLUDE]
+                mBodyView.setText(post.body);
+                User user = dataSnapshot.getValue(User.class);
+                nick_test.setText(user.nickName);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // [START_EXCLUDE]
-                Toast.makeText(PostDetailActivity.this, "Failed to load post.",
+                Toast.makeText(PostDetailActivity.this, "포스트를 로드하는데 실패",
                         Toast.LENGTH_SHORT).show();
-                // [END_EXCLUDE]
             }
         };
         mPostReference.addValueEventListener(postListener);
@@ -161,18 +176,14 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Get user information
                         User user = dataSnapshot.getValue(User.class);
-                        String authorName = user.nickName;
-
-                            // Create new comment object
-                            String commentText = mCommentField.getText().toString();
-                        if(commentText!=null){
-                            Comment comment = new Comment(uid,authorName, commentText);
-                            // Push the comment, it will appear in the list
+                        String commentText = mCommentField.getText().toString();
+                        if (commentText != null) {
+                            author = user.nickName;
+                            Comment comment = new Comment(uid, author, commentText);
                             mCommentsReference.push().setValue(comment);
-                        }else{
-                            Toast.makeText(PostDetailActivity.this,"내용을 입력해주세요",Toast.LENGTH_SHORT);
+                        } else {
+                            Toast.makeText(PostDetailActivity.this, "내용을 입력해주세요", Toast.LENGTH_SHORT);
                         }
 
                         // Clear the field
@@ -234,8 +245,6 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
                     Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
 
-                    // A comment has changed, use the key to determine if we are displaying this
-                    // comment and if so displayed the changed comment.
                     Comment newComment = dataSnapshot.getValue(Comment.class);
                     String commentKey = dataSnapshot.getKey();
 
@@ -312,7 +321,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         @Override
         public void onBindViewHolder(CommentViewHolder holder, int position) {
             Comment comment = mComments.get(position);
-            holder.authorView.setText(comment.nickName+" 님:");
+            holder.authorView.setText(comment.nickName + " 님:");
             holder.bodyView.setText(comment.text);
         }
 

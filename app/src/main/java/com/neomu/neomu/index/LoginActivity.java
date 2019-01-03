@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.neomu.neomu.club.Club_New_Activity;
 import com.neomu.neomu.club.MainActivity;
 import com.neomu.neomu.R;
-import com.neomu.neomu.map.MapyActivity;
 
 //로그인 액티비티
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -47,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         test_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MapyActivity.class));
+                startActivity(new Intent(LoginActivity.this,Club_New_Activity.class));
             }
         });
 

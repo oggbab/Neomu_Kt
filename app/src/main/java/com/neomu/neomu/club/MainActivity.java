@@ -10,13 +10,9 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 import com.neomu.neomu.R;
 import com.neomu.neomu.map.MapyActivity;
-import com.neomu.neomu.models.User;
 import com.neomu.neomu.mypage.MypageActivity;
 
 import androidx.annotation.NonNull;

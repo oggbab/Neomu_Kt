@@ -30,9 +30,7 @@ public class MainFragment extends Fragment {
 
     private static final String TAG = "MainFragment";
 
-    // [START define_database_reference]
     private DatabaseReference mDatabase;
-    // [END define_database_reference]
 
     private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
     private RecyclerView mRecycler;
