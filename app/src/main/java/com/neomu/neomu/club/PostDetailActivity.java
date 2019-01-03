@@ -47,7 +47,10 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
     private TextView mAuthorView;
     private TextView mTitleView;
     private TextView mBodyView;
+<<<<<<< HEAD
     private TextView postLocation, postPrice, postDate, postTime;
+=======
+>>>>>>> parent of cbe0f03... 업데이트
     private EditText mCommentField;
     private Button mCommentButton;
     private RecyclerView mCommentsRecycler;
@@ -85,11 +88,14 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         mCommentField = findViewById(R.id.fieldCommentText);
         mCommentButton = findViewById(R.id.buttonPostComment);
         mCommentsRecycler = findViewById(R.id.recyclerPostComments);
+<<<<<<< HEAD
         postLocation = findViewById(R.id.postLocation);
         postPrice = findViewById(R.id.postPrice);
         postDate = findViewById(R.id.postDate);
         postTime = findViewById(R.id.postTime);
         nick_test = findViewById(R.id.nick_test);
+=======
+>>>>>>> parent of cbe0f03... 업데이트
 
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -119,6 +125,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
+<<<<<<< HEAD
                 mAuthorView.setText(post.category);
                 mTitleView.setText(post.title);
                 postLocation.setText("#" + "홍대입구역");
@@ -129,6 +136,13 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 mBodyView.setText(post.body);
                 User user = dataSnapshot.getValue(User.class);
                 nick_test.setText(user.nickName);
+=======
+                // [START_EXCLUDE]
+                mAuthorView.setText(post.author);
+                mTitleView.setText(post.title);
+                mBodyView.setText(post.body);
+                // [END_EXCLUDE]
+>>>>>>> parent of cbe0f03... 업데이트
             }
 
             @Override
@@ -177,10 +191,20 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         User user = dataSnapshot.getValue(User.class);
+<<<<<<< HEAD
                         String commentText = mCommentField.getText().toString();
                         if (commentText != null) {
                             author = user.nickName;
                             Comment comment = new Comment(uid, author, commentText);
+=======
+                        String authorName = user.nickName;
+
+                            // Create new comment object
+                            String commentText = mCommentField.getText().toString();
+                        if(commentText!=null){
+                            Comment comment = new Comment(authorName, uid, commentText);
+                            // Push the comment, it will appear in the list
+>>>>>>> parent of cbe0f03... 업데이트
                             mCommentsReference.push().setValue(comment);
                         } else {
                             Toast.makeText(PostDetailActivity.this, "내용을 입력해주세요", Toast.LENGTH_SHORT);
@@ -321,8 +345,12 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         @Override
         public void onBindViewHolder(CommentViewHolder holder, int position) {
             Comment comment = mComments.get(position);
+<<<<<<< HEAD
 //            holder.authorView.setText(comment.author + " 님:");
             holder.authorView.setText(comment.nickName + " 님:");
+=======
+            holder.authorView.setText(comment.author);
+>>>>>>> parent of cbe0f03... 업데이트
             holder.bodyView.setText(comment.text);
         }
 

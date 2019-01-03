@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout1"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -29,6 +29,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+<<<<<<< HEAD
         <!--완료한 즐겨찾기-->
         <LinearLayout
             android:layout_width="wrap_content"
@@ -42,6 +43,16 @@
                 android:layout_below="@+id/tabs"
                 android:layout_marginTop="100dp" />
         </LinearLayout>
+=======
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_marginTop="100dp"
+            android:id="@+id/container1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabs" />
+>>>>>>> parent of cbe0f03... 업데이트
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

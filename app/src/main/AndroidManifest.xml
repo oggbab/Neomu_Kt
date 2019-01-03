@@ -13,7 +13,7 @@
         android:label="너\u0026무"
         android:roundIcon="@mipmap/ic_new_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".index.SpalshActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,28 +21,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".index.LoginActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".index.AuthActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".index.JoinActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".club.Club_New_Activity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".club.MainActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".club.PostDetailActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".mypage.MypageActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".map.MapyActivity" />
+        <activity android:name=".index.LoginActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".index.AuthActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".index.JoinActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".club.Club_New_Activity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".club.MainActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".club.PostDetailActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".mypage.MypageActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".map.MapyActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -40,12 +40,11 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         numStarsView.setText(String.valueOf(post.likeCount));
         bodyView.setText(post.body);
 
-        postPrice.setText("#"+post.price+"천원");
+        postPrice.setText(post.price);
 //        postPeople.setText(post.people);
-        postLocation.setText("#"+"홍대입구역");
+        postLocation.setText(post.location);
         postDate.setText(post.date);
         postTime.setText(post.time);
-        categoryView.setText(post.category);
 
         starView.setOnClickListener(starClickListener);
     }

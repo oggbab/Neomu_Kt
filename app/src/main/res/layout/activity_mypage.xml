@@ -23,11 +23,18 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of cbe0f03... 업데이트
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="50dp"
+<<<<<<< HEAD
             android:orientation="vertical"
+=======
+>>>>>>> parent of cbe0f03... 업데이트
             android:background="#252837"
             android:gravity="center">
 
@@ -37,7 +44,12 @@
                 android:src="@drawable/mypage_icon"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+<<<<<<< HEAD
                 android:layout_marginTop="10dp"
+=======
+                android:src="@drawable/mypage_icon"
+
+>>>>>>> parent of cbe0f03... 업데이트
                 />
 
 
@@ -48,10 +60,14 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/serif_b"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="10dp"
                 android:text="박상우님"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of cbe0f03... 업데이트
         </RelativeLayout>
 
 
@@ -70,7 +86,10 @@
         <LinearLayout
             android:id="@+id/mypage_sub"
             android:layout_width="wrap_content"
+<<<<<<< HEAD
             android:orientation="vertical"
+=======
+>>>>>>> parent of cbe0f03... 업데이트
             android:layout_height="wrap_content">
 
             <androidx.viewpager.widget.ViewPager

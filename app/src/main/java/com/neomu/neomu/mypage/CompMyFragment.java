@@ -14,8 +14,15 @@ public class CompMyFragment extends MyMainFragment {
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
 
+<<<<<<< HEAD
         Query compPostsQuery = databaseReference.child("posts").orderByChild("category").equalTo("게임");
 
         return compPostsQuery;
+=======
+        Query recentPostsQuery = databaseReference.child("posts")
+                .limitToFirst(100);
+
+        return recentPostsQuery;
+>>>>>>> parent of cbe0f03... 업데이트
     }
 }

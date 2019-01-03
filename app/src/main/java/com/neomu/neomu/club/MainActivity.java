@@ -3,16 +3,22 @@ package com.neomu.neomu.club;
 import android.content.Intent;
 import android.os.Bundle;
 
+<<<<<<< HEAD
 
+=======
+import android.view.Menu;
+>>>>>>> parent of cbe0f03... 업데이트
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+<<<<<<< HEAD
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
+=======
+>>>>>>> parent of cbe0f03... 업데이트
 import com.neomu.neomu.R;
 import com.neomu.neomu.map.MapyActivity;
 import com.neomu.neomu.mypage.MypageActivity;
@@ -32,8 +38,11 @@ public class  MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    DrawerLayout drawerLayout1;
+    DrawerLayout drawerLayout;
+    private FragmentPagerAdapter mPagerAdapter;
+    private ViewPager mViewPager;
     Intent intent;
+<<<<<<< HEAD
     TextView nick;
     String result;
 
@@ -70,40 +79,46 @@ public class  MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager1;
 
+=======
+>>>>>>> parent of cbe0f03... 업데이트
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        // 프레그먼트 세팅
+        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            private final Fragment[] mFragments = new Fragment[] {
+                    new PopularFragment(),
+                    new NewFragment(),
+                    new NearFragment()
+            };
+            private final String[] mFragmentNames = new String[] {
+                    "인기있는","새로운","근처에"
+            };
+            @Override
+            public Fragment getItem(int position) {
+                return mFragments[position];
+            }
+            @Override
+            public int getCount() {
+                return mFragments.length;
+            }
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mFragmentNames[position];
+            }
+        };
         // 어뎁터 설정
-        mViewPager1 = findViewById(R.id.container);
-        mViewPager1.setAdapter(mPagerAdapter1);
+        mViewPager = findViewById(R.id.container1);
+        mViewPager.setAdapter(mPagerAdapter);
         TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager1);
+        tabLayout.setupWithViewPager(mViewPager);
 
-        //db 이름 가져오기
-/*        nick = findViewById(R.id.navi_id);
 
-        final String userId = getUid();
-        mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Get user value
-                        User user = dataSnapshot.getValue(User.class);
-                        result = String.valueOf(user.nickName);
-                        finish();
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-
-                });
-
-                        nick.setText(result);*/
 
         // 1-1 툴바, 네비게이션 뷰
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -111,9 +126,9 @@ public class  MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
 
-        drawerLayout1 =  findViewById(R.id.drawer_layout1);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout1, toolbar, 0, 0);
-        drawerLayout1.setDrawerListener(actionBarDrawerToggle);
+        drawerLayout =  findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
 
@@ -134,7 +149,7 @@ public class  MainActivity extends AppCompatActivity {
                         break;
                     case R.id.third:
                         Toast.makeText(getApplicationContext(), "즐겨찾기 설정해요", Toast.LENGTH_SHORT).show();
-                        drawerLayout1.closeDrawer(GravityCompat.START);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.fourth:
                         intent = new Intent(MainActivity.this, MapyActivity.class);

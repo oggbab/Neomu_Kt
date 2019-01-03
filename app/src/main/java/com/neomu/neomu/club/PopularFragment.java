@@ -11,10 +11,17 @@ public class PopularFragment extends MainFragment {
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
 
+<<<<<<< HEAD
         Query popularPostsQuery = databaseReference.child("posts")
                 .orderByChild("likeCount").startAt(1);
 
         return popularPostsQuery;
+=======
+        Query recentPostsQuery = databaseReference.child("posts")
+                .limitToFirst(100);
+
+        return recentPostsQuery;
+>>>>>>> parent of cbe0f03... 업데이트
 
     }
 }
