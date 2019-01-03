@@ -127,7 +127,6 @@ public class  MainActivity extends AppCompatActivity {
                     case R.id.first:
                         intent = new Intent(MainActivity.this, MainActivity.class);
                         startActivity(intent);
-                        drawerLayout1.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.second:
                         intent = new Intent(MainActivity.this, MypageActivity.class);
