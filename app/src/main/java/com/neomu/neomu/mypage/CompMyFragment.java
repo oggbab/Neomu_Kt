@@ -14,9 +14,7 @@ public class CompMyFragment extends MyMainFragment {
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
 
-        String myUserId = getUid();
         Query compPostsQuery = databaseReference.child("posts").orderByChild("category").equalTo("게임");
-
 
         return compPostsQuery;
     }

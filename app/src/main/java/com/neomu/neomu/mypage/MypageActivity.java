@@ -3,6 +3,7 @@ package com.neomu.neomu.mypage;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -99,7 +100,6 @@ public class MypageActivity extends AppCompatActivity {
                     case R.id.second:
                         intent = new Intent(MypageActivity.this, MypageActivity.class);
                         startActivity(intent);
-                        drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.third:
                         Toast.makeText(getApplicationContext(), "즐겨찾기 설정해요", Toast.LENGTH_SHORT).show();

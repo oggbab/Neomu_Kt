@@ -321,6 +321,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         @Override
         public void onBindViewHolder(CommentViewHolder holder, int position) {
             Comment comment = mComments.get(position);
+//            holder.authorView.setText(comment.author + " 님:");
             holder.authorView.setText(comment.nickName + " 님:");
             holder.bodyView.setText(comment.text);
         }

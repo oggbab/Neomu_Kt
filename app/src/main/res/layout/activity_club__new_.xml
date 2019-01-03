@@ -147,7 +147,6 @@
                         android:layout_weight="1"
                         android:textColor="#252837" />
 
-
                 </RadioGroup>
 
                 <RadioGroup
@@ -344,12 +343,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/round_price_btn"
-                        app:snp_buttonPaddingLeft="30dp"
-                        app:snp_buttonPaddingRight="30dp"
                         app:snp_maxValue="100000"
                         app:snp_minValue="1000"
                         app:snp_stepSize="1000"
-                        app:snp_updateInterval="100" />
+                        app:snp_updateInterval="100"
+                        app:snp_buttonPaddingLeft="30dp"
+                        app:snp_buttonPaddingRight="30dp"
+                        />
 
                 </LinearLayout>
 

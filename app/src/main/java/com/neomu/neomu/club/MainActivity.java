@@ -3,6 +3,7 @@ package com.neomu.neomu.club;
 import android.content.Intent;
 import android.os.Bundle;
 
+
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+
 import com.neomu.neomu.R;
 import com.neomu.neomu.map.MapyActivity;
 import com.neomu.neomu.mypage.MypageActivity;
@@ -41,7 +43,6 @@ public class  MainActivity extends AppCompatActivity {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     }
-
     // 프레그먼트 세팅
     private FragmentPagerAdapter mPagerAdapter1 = new FragmentPagerAdapter(getSupportFragmentManager()) {
         private final Fragment[] mFragments1 = new Fragment[] {
@@ -131,7 +132,6 @@ public class  MainActivity extends AppCompatActivity {
                     case R.id.second:
                         intent = new Intent(MainActivity.this, MypageActivity.class);
                         startActivity(intent);
-                        drawerLayout1.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.third:
                         Toast.makeText(getApplicationContext(), "즐겨찾기 설정해요", Toast.LENGTH_SHORT).show();

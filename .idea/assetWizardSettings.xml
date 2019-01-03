@@ -13,12 +13,34 @@
                       <PersistentState>
                         <option name="children">
                           <map>
-                            <entry key="launcher">
+                            <entry key="actionbar">
                               <value>
                                 <PersistentState>
                                   <option name="children">
                                     <map>
-                                      <entry key="foregroundClipArt">
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="paddingPercent" value="-10" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_favorite_black_24dp.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="image">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
@@ -29,12 +51,31 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\woong\Downloads\icon\Icon-1024.png" />
+                                      <entry key="outputName" value="ic_like_off" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="b5b5b5" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
                                       <entry key="foregroundImage">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="36" />
+                                                <entry key="scalingPercent" value="35" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -46,11 +87,11 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundLayerName" value="ic_neomu_back" />
-                                      <entry key="foregroundImage" value="C:\Users\woong\Downloads\0_FW_ [한미반도체] 로고 AI 파일 전달 건, 181206_181210\Icon-1024.png" />
-                                      <entry key="foregroundLayerName" value="laucher_ic" />
+                                      <entry key="backgroundLayerName" value="ic_icon_back" />
+                                      <entry key="foregroundImage" value="C:\Users\woong\Downloads\icon\Icon-1024.png" />
+                                      <entry key="foregroundLayerName" value="ic_icon_fore" />
                                       <entry key="legacyIconShape" value="CIRCLE" />
-                                      <entry key="previewDensity" value="XXXHIGH" />
+                                      <entry key="outputName" value="ic_new" />
                                       <entry key="webIconShape" value="CIRCLE" />
                                     </map>
                                   </option>
@@ -82,7 +123,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_pin_drop_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_account_circle_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -92,9 +133,10 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="6981ec" />
-                            <entry key="outputName" value="map_icon" />
-                            <entry key="sourceFile" value="C:\Users\woong\icon.psd" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="color" value="fbce02" />
+                            <entry key="outputName" value="ic_serch" />
+                            <entry key="sourceFile" value="C:\Users\woong\Downloads\ic_serch.svg" />
                           </map>
                         </option>
                       </PersistentState>

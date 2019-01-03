@@ -29,14 +29,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:gravity="center_vertical"
-        tools:text="3명"
+        tools:text="#3명"
         android:fontFamily="@font/sans_r"
         style="style/club_new_title"
         android:textColor="#B5B5B5"
         android:layout_centerInParent="true"
         android:background="@drawable/check_background"
         android:textSize="10sp"
-        android:text="#3명"
+        android:text="#홍대입구역"
         />
 
     <TextView

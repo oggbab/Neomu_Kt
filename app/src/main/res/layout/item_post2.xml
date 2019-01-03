@@ -64,24 +64,22 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="120dp"
-            >
+            android:orientation="horizontal">
+
             <include
                 layout="@layout/include_post_infor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/postAuthorLayout"
-                android:layout_alignParentLeft="true"
-                />
+                android:layout_alignParentLeft="true" />
 
             <include
                 layout="@layout/include_post_date"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/postAuthorLayout"
-                android:layout_alignParentLeft="true"
-                />
+                android:layout_alignParentLeft="true" />
 
         </LinearLayout>
 

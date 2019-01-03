@@ -15,21 +15,19 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <include layout="@layout/tool_bar" />
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
+                app:tabTextColor="#000000"
                 app:tabIndicatorColor="#FBCE02"
-                app:tabTextColor="#000000" />
+                />
 
         </com.google.android.material.appbar.AppBarLayout>
-
 
         <!--완료한 즐겨찾기-->
         <LinearLayout
@@ -38,7 +36,7 @@
             android:orientation="vertical">
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/container"
+                android:id="@+id/container1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tabs"
@@ -54,10 +52,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ffffff"
-        android:backgroundTint="#000000"
         app:headerLayout="@layout/side_bar"
+        android:background="#ffffff"
         app:itemTextColor="#ffffff"
+        android:backgroundTint="#000000"
         app:menu="@menu/navi_item" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

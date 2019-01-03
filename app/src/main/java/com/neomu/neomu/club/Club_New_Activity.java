@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -28,12 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPickerListener;
 import com.neomu.neomu.R;
-import com.neomu.neomu.map.MapyActivity;
 import com.neomu.neomu.models.Post;
 import com.neomu.neomu.models.User;
-
-import java.sql.Array;
-import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -102,13 +97,6 @@ public class Club_New_Activity extends AppCompatActivity{
         club_new_time_text = findViewById(R.id.club_new_time_text);
 
         pricePicker = findViewById(R.id.numberPicker);
-        et_location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(Club_New_Activity.this,MapyActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
         //라디오
@@ -167,9 +155,9 @@ public class Club_New_Activity extends AppCompatActivity{
 
         Intent mapyIntent = getIntent();
 //        String a = mapyIntent.getStringExtra("markerTitle" + "markerSnippet");
-//        String a = mapyIntent.getStringExtra("location");
-//        et_location.setText(a);
-        et_location.setText("홍대입구역 4번 출구");
+        String a = mapyIntent.getStringExtra("location");
+//        String a = mapyIntent.getStringExtra("club_title");
+        et_location.setText(a);
     }
 
     //다이얼로그 메소드
@@ -233,7 +221,7 @@ public class Club_New_Activity extends AppCompatActivity{
         final String title = et_title.getText().toString();
         final String body = et_body.getText().toString();
         final String location = et_location.getText().toString();
-        final String price_result = price_text.getText().toString();
+        final String price_result = price_text.getText().toString()+"천원";
         final String category_result = category;
         date = club_new_date_text.getText().toString();
         time = club_new_time_text.getText().toString();

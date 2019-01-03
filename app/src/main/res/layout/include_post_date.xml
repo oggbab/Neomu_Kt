@@ -3,38 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="#ffffff"
     android:gravity="right"
-    >
-
+    android:orientation="horizontal">
 
 
     <TextView
         android:id="@+id/postDate"
+        style="style/club_new_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:gravity="center_vertical"
-        tools:text="2018.12.31"
         android:fontFamily="@font/sans_r"
-        style="style/club_new_title"
-        android:textSize="10sp"
+        android:gravity="center_vertical"
         android:textColor="#B5B5B5"
-        />
+        android:textSize="10sp"
+        tools:text="2018.12.31" />
 
     <TextView
         android:id="@+id/postTime"
+        style="style/club_new_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:gravity="center_vertical"
-        tools:text="13:00"
-        android:textSize="10sp"
         android:fontFamily="@font/sans_r"
-        style="style/club_new_title"
+        android:gravity="center_vertical"
         android:textColor="#B5B5B5"
-        />
-
+        android:textSize="10sp"
+        tools:text="13:00" />
 
 
 </LinearLayout>
