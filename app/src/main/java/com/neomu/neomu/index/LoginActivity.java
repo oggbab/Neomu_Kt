@@ -17,9 +17,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DatabaseReference;
+import com.neomu.neomu.SaveSharedPreference;
 import com.neomu.neomu.club.Club_New_Activity;
 import com.neomu.neomu.club.MainActivity;
 import com.neomu.neomu.R;
+import com.neomu.neomu.map.MapsActivity;
+import com.neomu.neomu.map.MapyActivity;
+import com.neomu.neomu.models.User;
 
 //로그인 액티비티
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,32 +35,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView main_linkText;
     EditText login_id, login_pw;
 
-    //테스트버튼
-    TextView test_btn;
-    TextView test_map;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        //서브 테스트용 버튼
-        test_btn = findViewById(R.id.test_btn);
-        test_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,Club_New_Activity.class));
-            }
-        });
-
-        test_map = findViewById(R.id.test_map);
-        test_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            }
-        });
 
 
         login_id = findViewById(R.id.login_id);
@@ -75,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseAuth = FirebaseAuth.getInstance();
 
 
+
     }
 
     @Override
@@ -83,10 +66,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.login_btn:
 
-//                final String id = login_id.getText().toString().trim();
                 final String id = login_id.getText().toString();
                 final String pw = login_pw.getText().toString();
-
 
                 if (id != null || pw != null) {
 

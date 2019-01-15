@@ -23,7 +23,7 @@ public class Post {
     public String date;
     public String time;
 
-    public int likeCount = 0;
+    public long likeCount = 0;
     public Map<String, Boolean> like = new HashMap<>();
 
     public Post() {

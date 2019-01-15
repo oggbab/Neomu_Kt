@@ -3,16 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp"
     android:layout_marginRight="20dp"
-
-    >
+    app:cardElevation="10dp"
+    app:cardMaxElevation="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardBackgroundColor="#EAEEF4">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="@drawable/round_box"
         android:padding="10dp">
 
         <include
@@ -47,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#B5B5B5"
                 tools:text="7" />
 
         </LinearLayout>
@@ -58,52 +62,36 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/postAuthorLayout"
             android:layout_alignParentLeft="true"
+            android:layout_marginTop="-10dp"
             android:layout_marginLeft="10dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:orientation="horizontal"
             android:layout_marginTop="120dp"
             >
-=======
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal">
->>>>>>> parent of cbe0f03... 업데이트
-
             <include
                 layout="@layout/include_post_infor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/postAuthorLayout"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="2dp"
-<<<<<<< HEAD
+                android:layout_weight="0.7"
                 />
-
-            <include
-            layout="@layout/include_post_date"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/postAuthorLayout"
-            android:layout_alignParentLeft="true"
-            />
-
-=======
-                android:layout_marginTop="34dp" />
 
             <include
                 layout="@layout/include_post_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:layout_below="@+id/postAuthorLayout"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="34dp" />
+                android:layout_weight="0.3"
+                />
 
->>>>>>> parent of cbe0f03... 업데이트
         </LinearLayout>
+
 
     </RelativeLayout>
 

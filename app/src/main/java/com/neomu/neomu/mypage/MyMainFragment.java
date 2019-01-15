@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
+import com.neomu.neomu.NickName;
 import com.neomu.neomu.R;
 import com.neomu.neomu.club.Club_New_Activity;
 import com.neomu.neomu.club.PostDetailActivity;
@@ -39,7 +40,6 @@ public class MyMainFragment extends Fragment {
     private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
-    LinearLayout mypage_sub,mypage_main;
 
     public MyMainFragment() {}
 
@@ -97,6 +97,7 @@ public class MyMainFragment extends Fragment {
 
                         Intent intent3 = new Intent(getActivity(), PostDetailActivity.class);
                         intent3.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
+                        intent3.putExtra("nickName",NickName.getNick());
                         startActivity(intent3);
                     }
                 });

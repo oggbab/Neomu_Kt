@@ -5,15 +5,17 @@
     android:id="@+id/drawer_layout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#252837"
+    android:background="#012038"
     android:orientation="vertical"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
+
     >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -33,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="4dp"
             android:layout_marginTop="120dp"
-            android:background="#6981EC" />
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/chat_title_txt"
@@ -91,7 +93,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/round_btn_chat"
+                    android:background="@drawable/round_btn"
+                    android:backgroundTint="#FBCE02"
                     android:text="Chat"
                     android:textSize="10sp" />
 
@@ -105,6 +108,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="#ffffff"
+        android:backgroundTint="#000000"
         app:headerLayout="@layout/side_bar"
-        app:menu="@menu/navi_item" />
+        app:itemTextColor="#ffffff"
+        app:menu="@menu/nav_item" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

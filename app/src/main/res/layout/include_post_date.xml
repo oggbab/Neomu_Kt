@@ -1,61 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-<<<<<<< HEAD
-    android:background="#ffffff"
-    android:gravity="right"
-    android:orientation="horizontal">
-=======
-    android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:background="#ffffff">
+    android:gravity="right"
+    >
 
->>>>>>> parent of cbe0f03... 업데이트
 
 
     <TextView
         android:id="@+id/postDate"
-        style="style/club_new_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:fontFamily="@font/sans_r"
-<<<<<<< HEAD
         android:gravity="center_vertical"
-        android:textColor="#B5B5B5"
-        android:textSize="10sp"
-        tools:text="2018.12.31" />
-=======
+        tools:text="2018.12.31"
+        android:fontFamily="@font/sans_r"
         style="style/club_new_title"
+        android:textSize="10sp"
         android:textColor="#B5B5B5"
-        android:textStyle="italic"
         />
->>>>>>> parent of cbe0f03... 업데이트
 
     <TextView
         android:id="@+id/postTime"
-        style="style/club_new_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-<<<<<<< HEAD
-=======
+        android:layout_marginRight="5dp"
         android:gravity="center_vertical"
         tools:text="13:00"
->>>>>>> parent of cbe0f03... 업데이트
-        android:fontFamily="@font/sans_r"
-        android:gravity="center_vertical"
-        android:textColor="#B5B5B5"
-<<<<<<< HEAD
         android:textSize="10sp"
-        tools:text="13:00" />
-=======
-        android:textStyle="italic"
+        android:fontFamily="@font/sans_r"
+        style="style/club_new_title"
+        android:textColor="#B5B5B5"
         />
 
->>>>>>> parent of cbe0f03... 업데이트
 
 
 </LinearLayout>

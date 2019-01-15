@@ -1,91 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:id="@+id/drawer_layout2"
-        >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <!--tools:context=".MapyActivity"-->
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <include
-                layout="@layout/tool_bar"/>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="51dp"
-            android:background="#B5B5B5" />
+    <!--상단영역-->
+    <LinearLayout
+        style="@style/club_new_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-        <!--상단영역-->
-        <LinearLayout
-            style="@style/club_new_top"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:layout_marginTop="51dp"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/club_new_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="모임 장소" />
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/club_title"
-                style="@style/map_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
+                style="@style/map_location_no"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:background="@drawable/round_club"
+                android:hint="모임장소 검색하기"
+                android:layout_marginTop="0dp"
+                android:textColor="#000000"
                 android:textColorHint="#B5B5B5"
-                android:textSize="15sp"
-                android:hint="모임장소 검색하기" />
+                android:layout_weight="0.8"
+                android:singleLine="true"
+                android:textSize="15sp" />
 
-            <Button
-                android:layout_width="match_parent"
+
+            <ImageView
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="넘기기"
-                android:id="@+id/btnSend"/>
+                android:src="@drawable/ic_serch"
+                android:layout_marginLeft="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/btnSend"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_done"
+                android:layout_marginLeft="10dp"
+                android:tint="#ED0D32"
+                />
+
 
         </LinearLayout>
-        </LinearLayout>
-            <fragment
-            android:layout_marginTop="151dp"
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="com.google.android.gms.maps.MapFragment" />
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/main_navigationview"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/side_bar"
-            app:menu="@menu/navi_item"
-            />
+    <fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

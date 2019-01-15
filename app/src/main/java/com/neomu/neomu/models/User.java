@@ -5,6 +5,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class User {
 
+    public String username;
     public String nickName;
     public String email;
     public String gender;
@@ -20,4 +21,8 @@ public class User {
         this.birth = birth;
     }
 
+    public String getNickName() {return nickName;}
+    public String getEmail() {return email;}
+    public String getGender() {return gender;}
+    public String getBirth() {return birth;}
 }

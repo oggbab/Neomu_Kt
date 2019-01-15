@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -36,6 +37,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.neomu.neomu.NickName;
 import com.neomu.neomu.R;
 import com.neomu.neomu.club.Club_New_Activity;
 import com.neomu.neomu.club.MainActivity;
@@ -97,9 +99,10 @@ public class MapyActivity extends AppCompatActivity
 
     DrawerLayout drawerLayout;
 
-    Button btnSend;
+    ImageView btnSend,btnSearch;
     String markerTitle;
     String markerSnippet;
+    Geocoder geocoder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,47 +136,15 @@ public class MapyActivity extends AppCompatActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //닉네임
+        Toast.makeText(getApplicationContext(),NickName.getNick(),Toast.LENGTH_LONG);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        drawerLayout = findViewById(R.id.drawer_layout2);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+        //지도 검색 버튼 이벤트
 
-        // 2-1 네비게이션뷰 클릭
-        NavigationView navigationView = findViewById(R.id.main_navigationview);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        club_title= findViewById(R.id.club_title);
+        btnSearch =findViewById(R.id.btnSearch);
 
-                switch (menuItem.getItemId()) {
-                    case R.id.first:
-                        intent = new Intent(MapyActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.second:
-                        intent = new Intent(MapyActivity.this, MypageActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.third:
-                        Toast.makeText(getApplicationContext(), "즐겨찾기 설정해요", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.fourth:
-                        intent = new Intent(MapyActivity.this, MapyActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.fifth:
-                        intent = new Intent(MapyActivity.this, Club_New_Activity.class);
-                        startActivity(intent);
-                        break;
-                }
-                return false;
-            }
-        });
 
         btnSend = findViewById(R.id.btnSend);
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -185,10 +156,10 @@ public class MapyActivity extends AppCompatActivity
                         + " 경도:" + String.valueOf(location.getLongitude());
 
                 Intent intent = new Intent(MapyActivity.this, Club_New_Activity.class);
-//                intent.putExtra("markerTitle", markerTitle);
-//                intent.putExtra("markerSnippet", markerSnippet);
-                intent.putExtra("location", "홍대입구역");
-                startActivity(intent);
+
+                intent.putExtra("result",club_title.getText().toString());
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
 
@@ -253,7 +224,7 @@ public class MapyActivity extends AppCompatActivity
             Log.d(TAG, "startLocationUpdates : call mFusedLocationClient.requestLocationUpdates");
 
             mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
-
+            mGoogleMap.setMyLocationEnabled(true);
             if (checkPermission())
                 mGoogleMap.setMyLocationEnabled(true);
 

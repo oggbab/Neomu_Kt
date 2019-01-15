@@ -18,6 +18,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.neomu.neomu.BuildConfig;
 import com.neomu.neomu.R;
+import com.neomu.neomu.map.MapsActivity;
 
 //스플래시(대기) 액티비티
 public class SpalshActivity extends AppCompatActivity {
@@ -78,8 +79,8 @@ public class SpalshActivity extends AppCompatActivity {
             builder.create().show();
         } else {
             //caps가 false일경우 액티비티 이동
+//            startActivity(new Intent(SpalshActivity.this, LoginActivity.class));
             startActivity(new Intent(SpalshActivity.this, LoginActivity.class));
-//            startActivity(new Intent(SpalshActivity.this, MainActivity.class));
         }
     }
 }

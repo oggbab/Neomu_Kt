@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -27,8 +28,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPickerListener;
 import com.neomu.neomu.R;
+import com.neomu.neomu.map.MapyActivity;
 import com.neomu.neomu.models.Post;
 import com.neomu.neomu.models.User;
+
+import java.sql.Array;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -54,7 +59,7 @@ public class Club_New_Activity extends AppCompatActivity{
     String time;
 
     TextView club_new_date_text,club_new_time_text;
-    Button club_new_date_btn,club_new_time_btn;
+    Button club_new_date_btn,clikeCountlub_new_time_btn;
 
 
     EditText et_body, et_title;
@@ -97,6 +102,13 @@ public class Club_New_Activity extends AppCompatActivity{
         club_new_time_text = findViewById(R.id.club_new_time_text);
 
         pricePicker = findViewById(R.id.numberPicker);
+        et_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(Club_New_Activity.this,MapyActivity.class);
+                startActivityForResult(intent,3000);
+            }
+        });
 
 
         //라디오
@@ -144,20 +156,29 @@ public class Club_New_Activity extends AppCompatActivity{
                 submitPost();
             }
         });
-        //날짜시간 클릭 다이얼로그
+
+        //가격대
         init();
         pricePicker.setListener(new ScrollableNumberPickerListener() {
             @Override
             public void onNumberPicked(int value) {
-                price_text.setText(String.valueOf((value)/1000));
+                price_text.setText(String.valueOf((value)/10000));
             }
         });
 
         Intent mapyIntent = getIntent();
-//        String a = mapyIntent.getStringExtra("markerTitle" + "markerSnippet");
-        String a = mapyIntent.getStringExtra("location");
-//        String a = mapyIntent.getStringExtra("club_title");
-        et_location.setText(a);
+    }
+
+    //결과 받을 인텐트
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 3000:
+                    et_location.setText(data.getStringExtra("result"));
+                    break;
+            }
+        }
     }
 
     //다이얼로그 메소드
@@ -221,7 +242,7 @@ public class Club_New_Activity extends AppCompatActivity{
         final String title = et_title.getText().toString();
         final String body = et_body.getText().toString();
         final String location = et_location.getText().toString();
-        final String price_result = price_text.getText().toString()+"천원";
+        final String price_result = price_text.getText().toString();
         final String category_result = category;
         date = club_new_date_text.getText().toString();
         time = club_new_time_text.getText().toString();

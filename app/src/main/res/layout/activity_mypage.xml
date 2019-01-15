@@ -20,55 +20,59 @@
 
             <include layout="@layout/tool_bar" />
 
-
         </com.google.android.material.appbar.AppBarLayout>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of cbe0f03... 업데이트
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="50dp"
-<<<<<<< HEAD
+            android:background="#012038"
             android:orientation="vertical"
-=======
->>>>>>> parent of cbe0f03... 업데이트
-            android:background="#252837"
             android:gravity="center">
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/mypage_icon"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-<<<<<<< HEAD
-                android:layout_marginTop="10dp"
-=======
                 android:src="@drawable/mypage_icon"
-
->>>>>>> parent of cbe0f03... 업데이트
+                android:layout_marginTop="10dp"
                 />
 
-
-            <TextView
-                android:id="@+id/mypage_activity_id"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/serif_b"
-                android:layout_marginTop="10dp"
-                android:text="박상우님"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
-<<<<<<< HEAD
-=======
+                android:layout_marginTop="-10dp"
+                android:orientation="horizontal">
 
->>>>>>> parent of cbe0f03... 업데이트
-        </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/mypage_activity_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/serif_b"
+                    android:text="박상우"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/serif_b"
+                   android:layout_marginLeft="2dp"
+                    android:text="님"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
         <com.google.android.material.tabs.TabLayout
@@ -76,21 +80,16 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginTop="200dp"
-            android:background="#000000"
-            app:tabIndicatorColor="#FBCE02"
-            app:tabSelectedTextColor="#FBCE02"
-            app:tabTextColor="#ffffff" />
+            android:background="#ffffff"
+            app:tabIndicatorColor="#000000"
+            app:tabTextColor="#000000" />
 
 
         <!--완료한 즐겨찾기-->
         <LinearLayout
-            android:id="@+id/mypage_sub"
             android:layout_width="wrap_content"
-<<<<<<< HEAD
-            android:orientation="vertical"
-=======
->>>>>>> parent of cbe0f03... 업데이트
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/container2"
@@ -113,6 +112,6 @@
         android:backgroundTint="#000000"
         app:headerLayout="@layout/side_bar"
         app:itemTextColor="#ffffff"
-        app:menu="@menu/navi_item" />
+        app:menu="@menu/nav_item" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

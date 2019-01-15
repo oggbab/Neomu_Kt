@@ -1,6 +1,7 @@
 package com.neomu.neomu.club;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.neomu.neomu.R;
+import com.neomu.neomu.SaveSharedPreference;
 import com.neomu.neomu.chat.ChatActivity;
 import com.neomu.neomu.models.Comment;
 import com.neomu.neomu.models.Post;
@@ -28,6 +30,7 @@ import com.neomu.neomu.models.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,17 +50,14 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
     private TextView mAuthorView;
     private TextView mTitleView;
     private TextView mBodyView;
-<<<<<<< HEAD
     private TextView postLocation, postPrice, postDate, postTime;
-=======
->>>>>>> parent of cbe0f03... 업데이트
     private EditText mCommentField;
     private Button mCommentButton;
+    private Button mJoinButton;
     private RecyclerView mCommentsRecycler;
-    public String authorName, title,author;
+    public String authorName, title, author,name_nick;
     public Button buttonPostJoin;
-    TextView nick_test;
-    String nick;
+    public String nickName;
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -88,32 +88,19 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         mCommentField = findViewById(R.id.fieldCommentText);
         mCommentButton = findViewById(R.id.buttonPostComment);
         mCommentsRecycler = findViewById(R.id.recyclerPostComments);
-<<<<<<< HEAD
         postLocation = findViewById(R.id.postLocation);
         postPrice = findViewById(R.id.postPrice);
         postDate = findViewById(R.id.postDate);
         postTime = findViewById(R.id.postTime);
-        nick_test = findViewById(R.id.nick_test);
-=======
->>>>>>> parent of cbe0f03... 업데이트
+        mJoinButton = findViewById(R.id.buttonPostJoin);
 
+        mJoinButton.setOnClickListener(this);
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        //채팅방 여는 부분
-        findViewById(R.id.buttonPostJoin).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                title=mTitleView.getText().toString();
-                nick=nick_test.getText().toString();
-                Intent intent = new Intent(PostDetailActivity.this, ChatActivity.class);
-                intent.putExtra("chatName", title);
-                intent.putExtra("userName", nick);
-                startActivity(intent);
-
-            }
-        });
+        Intent intent2 = getIntent();
+        name_nick = intent2.getStringExtra("nickName");
+        author =name_nick;
 
     }
 
@@ -125,7 +112,6 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
-<<<<<<< HEAD
                 mAuthorView.setText(post.category);
                 mTitleView.setText(post.title);
                 postLocation.setText("#" + "홍대입구역");
@@ -135,14 +121,8 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 postTime.setText(post.time);
                 mBodyView.setText(post.body);
                 User user = dataSnapshot.getValue(User.class);
-                nick_test.setText(user.nickName);
-=======
-                // [START_EXCLUDE]
-                mAuthorView.setText(post.author);
-                mTitleView.setText(post.title);
-                mBodyView.setText(post.body);
-                // [END_EXCLUDE]
->>>>>>> parent of cbe0f03... 업데이트
+                authorName = post.author;
+//                nickName = "박상우 님";
             }
 
             @Override
@@ -176,13 +156,6 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         mAdapter.cleanupListener();
     }
 
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.buttonPostComment) {
-            postComment();
-        }
-    }
 
     private void postComment() {
         final String uid = getUid();
@@ -190,21 +163,11 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        User user = dataSnapshot.getValue(User.class);
-<<<<<<< HEAD
+
                         String commentText = mCommentField.getText().toString();
                         if (commentText != null) {
-                            author = user.nickName;
-                            Comment comment = new Comment(uid, author, commentText);
-=======
-                        String authorName = user.nickName;
 
-                            // Create new comment object
-                            String commentText = mCommentField.getText().toString();
-                        if(commentText!=null){
-                            Comment comment = new Comment(authorName, uid, commentText);
-                            // Push the comment, it will appear in the list
->>>>>>> parent of cbe0f03... 업데이트
+                            Comment comment = new Comment(uid, author, commentText);
                             mCommentsReference.push().setValue(comment);
                         } else {
                             Toast.makeText(PostDetailActivity.this, "내용을 입력해주세요", Toast.LENGTH_SHORT);
@@ -220,6 +183,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                     }
                 });
     }
+
 
     private static class CommentViewHolder extends RecyclerView.ViewHolder {
 
@@ -306,32 +270,23 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                     } else {
                         Log.w(TAG, "onChildRemoved:unknown_child:" + commentKey);
                     }
-                    // [END_EXCLUDE]
                 }
 
                 @Override
                 public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
                     Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
 
-                    // A comment has changed position, use the key to determine if we are
-                    // displaying this comment and if so move it.
                     Comment movedComment = dataSnapshot.getValue(Comment.class);
                     String commentKey = dataSnapshot.getKey();
 
-                    // ...
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Log.w(TAG, "postComments:onCancelled", databaseError.toException());
-                    Toast.makeText(mContext, "Failed to load comments.",
-                            Toast.LENGTH_SHORT).show();
+
                 }
             };
             ref.addChildEventListener(childEventListener);
-            // [END child_event_listener_recycler]
-
-            // Store reference to listener so it can be removed on app stop
             mChildEventListener = childEventListener;
         }
 
@@ -345,12 +300,7 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         @Override
         public void onBindViewHolder(CommentViewHolder holder, int position) {
             Comment comment = mComments.get(position);
-<<<<<<< HEAD
-//            holder.authorView.setText(comment.author + " 님:");
             holder.authorView.setText(comment.nickName + " 님:");
-=======
-            holder.authorView.setText(comment.author);
->>>>>>> parent of cbe0f03... 업데이트
             holder.bodyView.setText(comment.text);
         }
 
@@ -366,4 +316,70 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
+
+
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+
+        switch (i) {
+
+            case R.id.buttonPostComment:
+
+                postComment();
+                break;
+
+            case R.id.buttonPostJoin:
+
+                // 가입된 아이디 체크 유효성 검사
+                title = mTitleView.getText().toString();
+
+                if (author == null) author = "guest 님";
+//                String result = chatActivity.checkUser(author, title);
+                String result = "0";
+
+                if (result.equals("0")) {
+                    show();
+
+                } else if(result=="1") {
+                    Intent intent = new Intent(PostDetailActivity.this, ChatActivity.class);
+                    intent.putExtra("chatName", title);
+                    intent.putExtra("AdminName", authorName);
+                    intent.putExtra("userName", author);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "코드에러", Toast.LENGTH_LONG).show();
+                }
+
+                break;
+        }
+    }
+
+    void show() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("JoinClub");
+        builder.setMessage("가입하시겠습니까?");
+        builder.setPositiveButton("가입하기",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        postComment();
+                        title = mTitleView.getText().toString();
+
+                        if (author == null) author = "guest 님";
+                        Intent intent = new Intent(PostDetailActivity.this, ChatActivity.class);
+                        intent.putExtra("chatName", title);
+                        intent.putExtra("AdminName", authorName);
+                        intent.putExtra("userName", author);
+                        startActivity(intent);
+                    }
+                });
+        builder.setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "다음기회에", Toast.LENGTH_LONG).show();
+                    }
+                });
+        builder.show();
+    }
+
 }

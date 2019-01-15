@@ -6,6 +6,7 @@
     android:background="@color/design_default_color_primary_dark"
     android:gravity="center_vertical"
     android:backgroundTint="#ffffff"
+    android:id="@+id/sidebar_set"
     >
 
     <LinearLayout
@@ -28,7 +29,7 @@
         <TextView
             android:id="@+id/navi_id"
             android:textColor="#000000"
-            android:text="박상우"
+            android:text="꽃순이"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/serif_b"

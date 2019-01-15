@@ -2,14 +2,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messagesList1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="#252837"
+        android:background="#EAEEF4"
         android:clipToPadding="false"
         android:padding="5dp"
         android:scrollbars="vertical"
@@ -25,9 +26,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="40dp"
-            android:backgroundTint="#6981EC"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="60dp"
+            android:elevation="40dp"
             android:src="@drawable/ic_addclub" />
 
     </RelativeLayout>

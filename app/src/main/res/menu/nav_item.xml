@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+
+        android:title="My">
+        <menu>
+            <item
+                android:id="@+id/first"
+                android:icon="@drawable/ic_home"
+                android:title="홈으로"
+                />
+            <item
+                android:id="@+id/second"
+                android:icon="@drawable/ic_account"
+                android:title="마이페이지"
+                />
+
+            <item
+                android:id="@+id/third"
+                android:icon="@drawable/ic_like"
+                android:title="즐겨찾기"
+                />
+
+        </menu>
+    </item>
+
+    <item
+        android:title="Club">
+        <menu>
+
+            <item
+                android:id="@+id/fourth"
+                android:icon="@drawable/ic_location"
+                android:title="내주변"
+                />
+
+            <item
+                android:id="@+id/fifth"
+                android:icon="@drawable/ic_addclub"
+                android:title="클럽 만들기"
+                />
+        </menu>
+    </item>
+</menu>

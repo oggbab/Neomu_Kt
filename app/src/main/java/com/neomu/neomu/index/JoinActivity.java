@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
     EditText nickName, email, pw, pw2;
     String mail, password, nickname;
     NumberPicker picker_year, picker_month;
+    Toast toast;
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -69,11 +71,31 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        String pass1 = pw.getText().toString();
+        String pass2 = pw2.getText().toString();
         nickname = nickName.getText().toString();
         mail = email.getText().toString();
-        password = pw.getText().toString();
 
-        signUp();
+        //유효성 검사
+
+        if (nickname.equals("") || mail.equals("") || pass1.equals("") || pass2.equals("")) {
+            Toast.makeText(this, "공백란을 모두 채워주세요", Toast.LENGTH_LONG).show();
+
+            //이메일 유효성검사
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
+            Toast.makeText(JoinActivity.this, "올바른 메일주소 형식이 아닙니다..", Toast.LENGTH_SHORT).show();
+
+            //비밀번호 길이 체크
+        } else if ((TextUtils.isEmpty(pass1) || pw.length() < 6) && (TextUtils.isEmpty(pass2) || pw2.length() < 6)) {
+            Toast.makeText(this, "비밀번호는 최소 6글자를 채워주세요", Toast.LENGTH_LONG).show();
+
+            //비밀번호 일치 확인
+        } else if (!pass1.equals(pass2)) {
+            Toast.makeText(this, "비밀번호 불일치!", Toast.LENGTH_LONG).show();
+
+        } else {
+            signUp();
+        }
 
     }
 
@@ -82,7 +104,10 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
 
     private void signUp() {
 
-        mAuth.createUserWithEmailAndPassword(mail, password)
+        String password = pw2.getText().toString();
+        String email2 = email.getText().toString();
+
+        mAuth.createUserWithEmailAndPassword(email2, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -90,7 +115,7 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             onAuthSuccess(task.getResult().getUser());
                         } else {
-                            Toast.makeText(JoinActivity.this, "회원가입에 실패했습니다.",
+                            Toast.makeText(JoinActivity.this, "이미 존재하는 계정입니다.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -101,30 +126,18 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
         String username = usernameFromEmail(user.getEmail());
 
 
-        //이메일 유효성검사
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
-            Toast.makeText(JoinActivity.this, "올바른 메일주소 형식이 아닙니다..", Toast.LENGTH_SHORT).show();
+            //성별 값
+            RadioGroup rg = (RadioGroup) findViewById(R.id.join_gender); // 라디오그룹 객체 맵핑
+            RadioButton selectedRdo = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
+            String gender = selectedRdo.getText().toString(); // 해당 라디오버튼 객체의 값 가져오기
 
-        } else {
-
-            //비밀번호 일치 확인
-            if (password.equals(pw2.getText().toString())) {
-
-                //성별 값
-                RadioGroup rg = (RadioGroup) findViewById(R.id.join_gender); // 라디오그룹 객체 맵핑
-                RadioButton selectedRdo = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
-                String gender = selectedRdo.getText().toString(); // 해당 라디오버튼 객체의 값 가져오기
-
-                //생년월일 값
-                String birth = String.valueOf(picker_year.getValue()) + "년 " + String.valueOf(picker_month.getValue()) + "월";
+            //생년월일 값
+            String birth = String.valueOf(picker_year.getValue()) + "년 " + String.valueOf(picker_month.getValue()) + "월";
 
 
-                // Write new user
-                writeNewUser(user.getUid(), username, user.getEmail(), gender, birth);
+            // Write new user
+            writeNewUser(user.getUid(), nickname, user.getEmail(), gender, birth);
 
-
-            }
-        }
 
 
         // Go to MainActivity

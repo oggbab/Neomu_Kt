@@ -25,6 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.neomu.neomu.R;
+import com.neomu.neomu.club.MainActivity;
 
 public class AuthActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -100,7 +101,8 @@ public class AuthActivity extends AppCompatActivity implements GoogleApiClient.O
                     if(!task.isSuccessful()){
                         Toast.makeText(AuthActivity.this, "인증 실패", Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(AuthActivity.this, "구글 로그인 인증 성공", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AuthActivity.this,MainActivity.class);
+                        startActivity(intent);
                     }
                 }
             });

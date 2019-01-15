@@ -5,7 +5,7 @@
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#252837"
+    android:background="#012038"
     android:orientation="vertical"
     tools:context=".club.Club_New_Activity">
 
@@ -41,6 +41,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
                     android:background="@drawable/round_club"
+                    android:textSize="12sp"
                     android:hint="모임명을 입력해주세요" />
 
             </LinearLayout>
@@ -66,9 +67,11 @@
                     style="@style/club_new_location_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableTint="#6981EC"
+                    android:drawableTint="#7161FA"
                     android:gravity="left"
-                    android:text="홍대입구 4번 출구" />
+                    android:hint="모임장소"
+                    android:textSize="12sp"
+                    android:text="" />
 
             </LinearLayout>
 
@@ -145,6 +148,7 @@
                         android:layout_weight="1"
                         android:textColor="#252837" />
 
+
                 </RadioGroup>
 
                 <RadioGroup
@@ -219,7 +223,8 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@drawable/bg" />
+                        android:src="@drawable/bg"
+                        android:background="@drawable/img_box" />
 
                 </LinearLayout>
 
@@ -275,7 +280,7 @@
                             android:id="@+id/club_new_date_btn"
                             android:layout_width="90dp"
                             android:layout_height="30dp"
-                            android:background="@drawable/round_price_btn"
+                            android:background="@drawable/round_price_btn2"
                             android:text="날짜 선택"
                             android:textColor="#B5B5B5" />
 
@@ -284,7 +289,7 @@
                             android:layout_width="90dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="5dp"
-                            android:background="@drawable/round_price_btn"
+                            android:background="@drawable/round_price_btn2"
                             android:text="시간 선택"
                             android:textColor="#B5B5B5" />
 
@@ -322,7 +327,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="3"
+                            android:text="0"
                             android:textColor="#484E6A" />
 
                         <TextView
@@ -330,7 +335,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
-                            android:text="천원"
+                            android:text="만원"
                             android:textColor="#484E6A" />
 
                     </LinearLayout>
@@ -340,14 +345,13 @@
                         android:id="@+id/numberPicker"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:background="@drawable/round_price_btn"
-                        app:snp_maxValue="100000"
-                        app:snp_minValue="1000"
-                        app:snp_stepSize="1000"
-                        app:snp_updateInterval="100"
+                        android:background="@drawable/round_price_btn2"
                         app:snp_buttonPaddingLeft="30dp"
                         app:snp_buttonPaddingRight="30dp"
-                        />
+                        app:snp_maxValue="100000"
+                        app:snp_minValue="10000"
+                        app:snp_stepSize="10000"
+                        app:snp_updateInterval="100" />
 
                 </LinearLayout>
 
@@ -379,9 +383,11 @@
                         android:layout_height="100dp"
                         android:background="@drawable/round_club_intro"
                         android:gravity="center"
-                        android:hint="소개글을 적어주세요"
+                        android:hint="소개글을 적어주세요 (20자)"
                         android:textSize="14sp"
-                        android:maxLines="3" />
+                        android:maxLines="3"
+                        android:maxLength="20"
+                        />
 
                 </LinearLayout>
 

@@ -5,8 +5,8 @@
             <item>
                 <shape>
                     <size
-                        android:width="20dp"
-                        android:height="15dp" />
+                        android:width="15dp"
+                        android:height="10dp" />
                     <solid android:color="#00000000" />
                     <padding
                         android:left="7dp"
@@ -17,7 +17,7 @@
             </item>
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="#6981EC" />
+                    <solid android:color="#6981ec" />
                 </shape>
             </item>
         </layer-list>
@@ -27,8 +27,8 @@
             <item>
                 <shape>
                     <size
-                        android:width="20dp"
-                        android:height="15dp" />
+                        android:width="15dp"
+                        android:height="10dp" />
                     <solid android:color="#00000000" />
                     <padding
                         android:left="7dp"
@@ -39,7 +39,7 @@
             </item>
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="#AAA" />
+                    <solid android:color="#f1f1f1" />
                 </shape>
             </item>
         </layer-list>

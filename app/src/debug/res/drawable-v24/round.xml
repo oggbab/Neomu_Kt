@@ -2,9 +2,9 @@
 <!--에디트텍스트 스타일만, 폰트는 style.xml-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="10dp"
-    android:shape="rectangle" >
+    android:shape="rectangle"
+    >
 
-    <solid android:color="#6981EC" />
     <size android:height="50dp"/>
     <corners android:radius="50dp"/>
     <stroke

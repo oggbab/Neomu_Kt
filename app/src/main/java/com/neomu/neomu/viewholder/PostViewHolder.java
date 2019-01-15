@@ -27,7 +27,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         numStarsView = itemView.findViewById(R.id.postNumStars);
         bodyView = itemView.findViewById(R.id.postBody);
         postPrice = itemView.findViewById(R.id.postPrice);
-        postPeople = itemView.findViewById(R.id.postPeople);
+//        postPeople = itemView.findViewById(R.id.postPeople);
         postLocation = itemView.findViewById(R.id.postLocation);
 
         postDate = itemView.findViewById(R.id.postDate);
@@ -36,15 +36,15 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public void bindToPost(Post post, View.OnClickListener starClickListener) {
         titleView.setText(post.title);
-        categoryView.setText(post.author);
         numStarsView.setText(String.valueOf(post.likeCount));
         bodyView.setText(post.body);
 
-        postPrice.setText(post.price);
+        postPrice.setText("#"+post.price+"천원");
 //        postPeople.setText(post.people);
-        postLocation.setText(post.location);
+        postLocation.setText("#"+"홍대입구역");
         postDate.setText(post.date);
         postTime.setText(post.time);
+        categoryView.setText(post.category);
 
         starView.setOnClickListener(starClickListener);
     }

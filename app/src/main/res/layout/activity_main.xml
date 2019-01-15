@@ -2,11 +2,17 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/drawer_layout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".club.MainActivity">
+
+    <TextView
+        android:id="@+id/texttest"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1bv@gmail.com"/>
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -15,21 +21,22 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <include layout="@layout/tool_bar" />
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
-                app:tabTextColor="#000000"
-                app:tabIndicatorColor="#FBCE02"
-                />
+                app:tabIndicatorColor="#000000"
+                app:tabTextColor="#000000" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-<<<<<<< HEAD
+
         <!--완료한 즐겨찾기-->
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,22 +44,12 @@
             android:orientation="vertical">
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/container1"
+                android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tabs"
-                android:layout_marginTop="100dp" />
+                android:layout_marginTop="98dp" />
         </LinearLayout>
-=======
-
-
-        <androidx.viewpager.widget.ViewPager
-            android:layout_marginTop="100dp"
-            android:id="@+id/container1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tabs" />
->>>>>>> parent of cbe0f03... 업데이트
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -63,10 +60,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/side_bar"
         android:background="#ffffff"
-        app:itemTextColor="#ffffff"
         android:backgroundTint="#000000"
-        app:menu="@menu/navi_item" />
+        app:headerLayout="@layout/side_bar"
+        app:itemTextColor="#ffffff"
+        app:menu="@menu/nav_item" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

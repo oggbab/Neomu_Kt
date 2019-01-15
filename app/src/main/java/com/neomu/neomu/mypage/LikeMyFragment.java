@@ -12,15 +12,10 @@ public class LikeMyFragment extends MyMainFragment{
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
 
-<<<<<<< HEAD
-        Query myLikePostsQuery = databaseReference.child("posts")
-                .orderByChild("likeCount").startAt(1);
-=======
         String myUserId = getUid();
-        Query myTopPostsQuery = databaseReference.child("user-posts").child(myUserId)
-                .orderByChild("starCount");
->>>>>>> parent of cbe0f03... 업데이트
+        Query myLikePostsQuery = databaseReference.child("posts")
+                .orderByChild("likeCount").limitToLast(1);
 
-        return myTopPostsQuery;
+        return myLikePostsQuery;
     }
 }
