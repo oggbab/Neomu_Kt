@@ -1,8 +1,8 @@
 # Neomu
-너&amp;무 APP 프로젝트
-
-개인프로젝트
-기술: android studio/java/photoshop
+너&amp;무 APP 개인 프로젝트
+_
+특징:위치기반 sns
+기술: android studio/java/photoshop/firebase/google API
 
 https://play.google.com/store/apps/details?id=com.neomu.neomu
 
