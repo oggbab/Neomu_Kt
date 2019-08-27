@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
-    tools:context=".mypage.MypageActivity">
+    tools:context=".app.mypage.MypageActivity">
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

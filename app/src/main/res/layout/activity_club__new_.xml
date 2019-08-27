@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="#012038"
     android:orientation="vertical"
-    tools:context=".club.Club_New_Activity">
+    tools:context=".app.club.Club_New_Activity">
 
     <ScrollView
         android:layout_width="match_parent"

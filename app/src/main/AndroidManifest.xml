@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_new_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".index.SpalshActivity">
+        <activity android:name=".app.index.SpalshActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,37 +23,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".index.LoginActivity"
+            android:name=".app.index.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".index.AuthActivity"
+            android:name=".app.index.AuthActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".index.JoinActivity"
+            android:name=".app.index.JoinActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".club.Club_New_Activity"
+            android:name=".app.club.Club_New_Activity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".club.MainActivity"
+            android:name=".app.club.MainActivity"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".club.PostDetailActivity"
+            android:name=".app.club.PostDetailActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".chat.ChatActivity"
+            android:name=".app.chat.ChatActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".mypage.MypageActivity"
+            android:name=".app.mypage.MypageActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".map.MapsActivity"></activity>
-        <activity android:name=".map.MapyActivity"></activity>
-        <activity android:name=".search.SearchActivity"></activity>
+        <activity android:name=".app.map.MapsActivity"></activity>
+        <activity android:name=".app.map.MapyActivity"></activity>
+        <activity android:name=".app.search.SearchActivity"></activity>
     </application>
 
 </manifest>

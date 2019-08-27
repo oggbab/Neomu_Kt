@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".index.LoginActivity">
+    tools:context=".app.index.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,8 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
 
             <!--프리뷰랑 실제 화면이랑 차이 있음(마진)-->
 
@@ -31,9 +29,10 @@
                 android:src="@drawable/logo" />
 
             <TextView
-                style="@style/main_title"
+                style="@style/login_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,11 +40,6 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
 
                 <EditText
                     android:id="@+id/login_id"

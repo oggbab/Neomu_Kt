@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#6981EC"
     android:orientation="vertical"
-    tools:context=".index.AuthActivity">
+    tools:context=".app.index.AuthActivity">
 
 
     <ImageView

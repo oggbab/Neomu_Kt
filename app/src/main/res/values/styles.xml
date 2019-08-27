@@ -22,6 +22,17 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="login_title">
+        <item name="android:text">너\u0026무</item>
+        <item name="android:fontFamily" tools:ignore="NewApi">@font/serif_b</item>
+        <item name="android:textSize">50dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginTop">-30dp</item>
+        <item name="android:layout_marginBottom">-30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
     <!--메인 서브 타이틀-->
     <style name="sub_title">
         <item name="android:fontFamily" tools:ignore="NewApi">@font/serif_b</item>
