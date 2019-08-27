@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#6981EC"
     android:orientation="vertical"
-    tools:context=".app.index.AuthActivity">
+    tools:context=".app.main.AuthActivity">
 
 
     <ImageView
@@ -14,10 +14,10 @@
         android:layout_height="250dp"
         android:layout_gravity="center"
         android:layout_marginTop="80dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/iv_logo" />
 
     <TextView
-        style="@style/main_title"
+        style="@style/tv_auth_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -30,14 +30,14 @@
 
 
         <TextView
-            android:id="@+id/main_auth_linktext"
+            android:id="@+id/tv_auth_linktext"
             style="@style/main_linkText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
 
         <com.google.android.gms.common.internal.SignInButtonImpl
-            android:id="@+id/main_auth_btn_google"
+            android:id="@+id/btn_auth_google"
             style="@style/main_loginBtn_google"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 
 
         <Button
-            android:id="@+id/main_auth_btn"
+            android:id="@+id/btn_auth_join"
             style="@style/main_loginBtn"
             android:backgroundTint="#FBCE02"
             android:layout_width="match_parent"

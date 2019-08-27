@@ -24,9 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.neomu.neomu.NickName;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.map.MapyActivity;
+import com.neomu.neomu.app.models.User;
 import com.neomu.neomu.app.mypage.MypageActivity;
 import com.neomu.neomu.app.search.SearchActivity;
 import com.neomu.neomu.common.activity.BaseActivity;
@@ -37,22 +37,22 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity {
 
     Intent intent;
-    FirebaseAuth mAuth;
+    FirebaseAuth mFirebaseAuth;
     FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabase;
-    FirebaseUser user;
-    NickName su;
-    String nick;
-    FragmentPagerAdapter mPagerAdapter1;
+    FirebaseUser mFirebaseUser;
+    String nickName;
+    FragmentPagerAdapter mPagerAdapter;
 
-    @BindView(R.id.main_navigationview) NavigationView navigationView;
+    @BindView(R.id.nv_main) NavigationView nv_main;
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.drawer_layout1) DrawerLayout drawerLayout1;
-    @BindView(R.id.container) ViewPager mViewPager1;
-    @BindView(R.id.tabs) TabLayout tabLayout;
-    @BindView(R.id.rightSearch) ImageView imageView;
-    @BindView(R.id.texttest) TextView texttest;
-    @BindView(R.id.navi_id) TextView navi_id;
+    @BindView(R.id.draw_main) DrawerLayout draw_main;
+    @BindView(R.id.vp_container) ViewPager vp_container;
+    @BindView(R.id.tab_main) TabLayout tab_main;
+    @BindView(R.id.iv_rightSearch) ImageView imageView;
+    @BindView(R.id.tv_test) TextView tv_test;
+    //연결된게 있어 대기
+    @BindView(R.id.tv_naviId) TextView navi_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,25 +60,25 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mAuth = FirebaseAuth.getInstance();
+        mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
 
         setFragment();
 
         //회원정보 받아오는부분
-        user=mAuth.getCurrentUser();
+        mFirebaseUser=mFirebaseAuth.getCurrentUser();
 
         //서버정보 가져오기
-        texttest.setText(user.getEmail());
+        tv_test.setText(mFirebaseUser.getEmail());
         mDatabase = mFirebaseDatabase.getReference("users");
-        mDatabase.orderByChild("email").equalTo(texttest.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.orderByChild("email").equalTo(tv_test.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    nick = (String) childDataSnapshot.child("nickName").getValue();
+                    nickName = (String) childDataSnapshot.child("nickName").getValue();
                 }
-                su = new NickName(nick);
+                new User().setNickName(nickName);
             }
 
             @Override
@@ -87,50 +87,47 @@ public class MainActivity extends BaseActivity {
         });
 
         // 어뎁터 설정
-        mViewPager1.setAdapter(mPagerAdapter1);
-        tabLayout.setupWithViewPager(mViewPager1);
+        vp_container.setAdapter(mPagerAdapter);
+        tab_main.setupWithViewPager(vp_container);
 
         //검색 창
         imageView.setOnClickListener(v -> {
-            Intent intent2 = new Intent(MainActivity.this, SearchActivity.class);
-            intent2.putExtra("nickName",nick);
-            startActivity(intent2);
+            Intent intent_toSearch = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent_toSearch);
         });
 
         setToolbar();
 
         //todo sharedReference로 가져오기
         //네비게이션 아이디 부분 설정
-        View view = navigationView.getHeaderView(0);
-        navi_id.setText(nick);
+        View view = nv_main.getHeaderView(0);
+        navi_id.setText(nickName);
         onNavigationListener();
     }
 
 
     // 2-1 네비게이션뷰 클릭
     private void onNavigationListener() {
-        navigationView.setNavigationItemSelectedListener(menuItem -> {
+        nv_main.setNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.first:
                     intent = new Intent(MainActivity.this, MainActivity.class);
                     startActivity(intent);
-                    finish();
-                    drawerLayout1.closeDrawer(GravityCompat.START);
+                    draw_main.closeDrawer(GravityCompat.START);
                     break;
                 case R.id.second:
                     intent = new Intent(MainActivity.this, MypageActivity.class);
-                    intent.putExtra("nickName",nick);
                     startActivity(intent);
                     finish();
-                    drawerLayout1.closeDrawer(GravityCompat.START);
+                    draw_main.closeDrawer(GravityCompat.START);
                     break;
                 case R.id.third:
                     showToast("즐겨찾기 설정해요",false);
-                    drawerLayout1.closeDrawer(GravityCompat.START);
+                    draw_main.closeDrawer(GravityCompat.START);
                     break;
                 case R.id.fourth:
                     intent = new Intent(MainActivity.this, MapyActivity.class);
-                    intent.putExtra("nickName",nick);
+                    onNewIntent(intent);
                     startActivity(intent);
                     finish();
                     break;
@@ -149,37 +146,38 @@ public class MainActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout1, toolbar, 0, 0);
-        drawerLayout1.setDrawerListener(actionBarDrawerToggle);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_menu_black_24dp));
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, draw_main, toolbar, 0, 0);
+        draw_main.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
 
+    //todo 프레그먼트 구조변경
     // 프레그먼트 세팅
     void setFragment(){
-        mPagerAdapter1 = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            private final Fragment[] mFragments1 = new Fragment[]{
+        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            private final Fragment[] mFragments = new Fragment[]{
                     new PopularFragment(),
                     new NewFragment(),
                     new NearFragment()
             };
-            private final String[] mFragmentNames1 = new String[]{
+            private final String[] mFragmentNames = new String[]{
                     "인기있는", "새로운", "근처에"
             };
 
             @Override
             public Fragment getItem(int position) {
-                return mFragments1[position];
+                return mFragments[position];
             }
 
             @Override
             public int getCount() {
-                return mFragments1.length;
+                return mFragments.length;
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return mFragmentNames1[position];
+                return mFragmentNames[position];
             }
         };
     }

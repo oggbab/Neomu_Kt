@@ -27,7 +27,7 @@
         android:layout_marginLeft="40dp"
         >
         <TextView
-            android:id="@+id/navi_id"
+            android:id="@+id/tv_naviId"
             android:textColor="#000000"
             android:text="꽃순이"
             android:layout_width="wrap_content"

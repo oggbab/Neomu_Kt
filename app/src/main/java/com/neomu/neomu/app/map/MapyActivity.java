@@ -34,9 +34,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
-import com.neomu.neomu.NickName;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.club.Club_New_Activity;
+import com.neomu.neomu.app.models.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -125,11 +125,11 @@ public class MapyActivity extends AppCompatActivity
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.fr_map);
         mapFragment.getMapAsync(this);
 
         //닉네임
-        Toast.makeText(getApplicationContext(),NickName.getNick(),Toast.LENGTH_LONG);
+        Toast.makeText(getApplicationContext(), User.getNickName(),Toast.LENGTH_LONG);
 
 
         //지도 검색 버튼 이벤트

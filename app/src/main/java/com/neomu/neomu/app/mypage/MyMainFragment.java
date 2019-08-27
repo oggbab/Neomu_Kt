@@ -17,10 +17,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
-import com.neomu.neomu.NickName;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.club.PostDetailActivity;
 import com.neomu.neomu.app.models.Post;
+import com.neomu.neomu.app.models.User;
 import com.neomu.neomu.app.viewholder.PostViewHolder;
 
 import androidx.fragment.app.Fragment;
@@ -95,7 +95,7 @@ public class MyMainFragment extends Fragment {
 
                         Intent intent3 = new Intent(getActivity(), PostDetailActivity.class);
                         intent3.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
-                        intent3.putExtra("nickName",NickName.getNick());
+                        intent3.putExtra("nickName", User.getNickName());
                         startActivity(intent3);
                     }
                 });

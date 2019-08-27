@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_new_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".app.index.SpalshActivity">
+        <activity android:name=".app.main.SpalshActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.index.LoginActivity"
+            android:name=".app.main.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".app.index.AuthActivity"
+            android:name=".app.main.AuthActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".app.index.JoinActivity"
+            android:name=".app.main.JoinActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".app.club.Club_New_Activity"

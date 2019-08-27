@@ -11,11 +11,11 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.neomu.neomu.NickName;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.club.Club_New_Activity;
 import com.neomu.neomu.app.club.MainActivity;
 import com.neomu.neomu.app.map.MapyActivity;
+import com.neomu.neomu.app.models.User;
 import com.neomu.neomu.app.search.SearchActivity;
 
 import androidx.annotation.NonNull;
@@ -82,19 +82,15 @@ public class MypageActivity extends AppCompatActivity {
 //        author = SaveSharedPreference.getUserName(this);
         nick = findViewById(R.id.mypage_activity_id);
 
-        Intent intentResult = getIntent();
-        nickIntent=intentResult.getStringExtra("nickName");
-        nick.setText(nickIntent);
+        nick.setText(User.getNickName());
 
-        NickName su = new NickName(nickIntent);
 
         //검색 창
-        imageView = findViewById(R.id.rightSearch);
+        imageView = findViewById(R.id.iv_rightSearch);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MypageActivity.this, SearchActivity.class);
-                intent.putExtra("nickName",NickName.getNick());
                 startActivity(intent);
             }
         });
@@ -112,10 +108,10 @@ public class MypageActivity extends AppCompatActivity {
 
 
         // 2-1 네비게이션뷰 클릭
-        NavigationView navigationView = findViewById(R.id.main_navigationview);
+        NavigationView navigationView = findViewById(R.id.nv_main);
 
         View view = navigationView.getHeaderView(0);
-        navi_id = view.findViewById(R.id.navi_id);
+        navi_id = view.findViewById(R.id.tv_naviId);
         navi_id.setText(nickIntent);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -130,7 +126,6 @@ public class MypageActivity extends AppCompatActivity {
                         break;
                     case R.id.second:
                         intent = new Intent(MypageActivity.this, MypageActivity.class);
-                        intent.putExtra("nickName",nickIntent);
                         startActivity(intent);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
@@ -140,7 +135,6 @@ public class MypageActivity extends AppCompatActivity {
                         break;
                     case R.id.fourth:
                         intent = new Intent(MypageActivity.this, MapyActivity.class);
-                        intent.putExtra("nickName",nickIntent);
                         startActivity(intent);
                         break;
                     case R.id.fifth:

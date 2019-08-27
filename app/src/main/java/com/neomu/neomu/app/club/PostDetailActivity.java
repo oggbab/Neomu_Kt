@@ -9,11 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,22 +20,36 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.chat.ChatActivity;
+import com.neomu.neomu.app.club.util.CommentAdapter;
 import com.neomu.neomu.app.models.Comment;
 import com.neomu.neomu.app.models.Post;
 import com.neomu.neomu.app.models.User;
+import com.neomu.neomu.common.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PostDetailActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class PostDetailActivity extends BaseActivity implements View.OnClickListener {
+
+    @BindView(R.id.tv_postCategory) TextView tv_postCategory;
+    @BindView(R.id.tv_postTitle) TextView tv_postTitle;
+    @BindView(R.id.tv_postBody) TextView tv_postBody;
+    @BindView(R.id.tv_CommentText) TextView tv_CommentText;
+    @BindView(R.id.rv_postDetail) RecyclerView rv_postDetail;
+    @BindView(R.id.tv_postLocation) TextView tv_postLocation;
+    @BindView(R.id.tv_postPrice) TextView tv_postPrice;
+    @BindView(R.id.tv_postDate) TextView tv_postDate;
+    @BindView(R.id.tv_postTime) TextView tv_postTime;
 
     private static final String TAG = "MyDetailActivity";
-
     public static final String EXTRA_POST_KEY = "post_key";
 
     private DatabaseReference mPostReference;
@@ -45,83 +57,56 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
     private ValueEventListener mPostListener;
     private String mPostKey;
     private CommentAdapter mAdapter;
-
-    private TextView mAuthorView;
-    private TextView mTitleView;
-    private TextView mBodyView;
-    private TextView postLocation, postPrice, postDate, postTime;
-    private EditText mCommentField;
-    private Button mCommentButton;
-    private Button mJoinButton;
-    private RecyclerView mCommentsRecycler;
-    public String authorName, title, author,name_nick;
-    public Button buttonPostJoin;
-    public String nickName;
-
-    public String getUid() {
-        return FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-    }
+    private String authorName;
+    private String title;
+    private String author;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+        ButterKnife.bind(this);
 
-        // Get post key from intent
         mPostKey = getIntent().getStringExtra(EXTRA_POST_KEY);
         if (mPostKey == null) {
             throw new IllegalArgumentException("Must pass EXTRA_POST_KEY");
         }
 
-        // Initialize Database
         mPostReference = FirebaseDatabase.getInstance().getReference()
                 .child("posts").child(mPostKey);
         mCommentsReference = FirebaseDatabase.getInstance().getReference()
                 .child("post-comments").child(mPostKey);
 
-        // Initialize Views
-        mAuthorView = findViewById(R.id.postCategory);
-        mTitleView = findViewById(R.id.postTitle);
-        mBodyView = findViewById(R.id.postBody);
-        mCommentField = findViewById(R.id.fieldCommentText);
-        mCommentButton = findViewById(R.id.buttonPostComment);
-        mCommentsRecycler = findViewById(R.id.recyclerPostComments);
-        postLocation = findViewById(R.id.postLocation);
-        postPrice = findViewById(R.id.postPrice);
-        postDate = findViewById(R.id.postDate);
-        postTime = findViewById(R.id.postTime);
-        mJoinButton = findViewById(R.id.buttonPostJoin);
-
-        mJoinButton.setOnClickListener(this);
-        mCommentButton.setOnClickListener(this);
-        mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
-
-        Intent intent2 = getIntent();
-        name_nick = intent2.getStringExtra("nickName");
-        author =name_nick;
-
+        rv_postDetail.setLayoutManager(new LinearLayoutManager(this));
+        author = User.getNickName();
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        ValueEventListener postListener = new ValueEventListener() {
+        if (setPostListener()){
+            mPostReference.addValueEventListener(mPostListener);
+            mAdapter = new CommentAdapter(this, mCommentsReference);
+            rv_postDetail.setAdapter(mAdapter);
+        }
+    }
+
+    private boolean setPostListener() {
+
+        mPostListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
-                mAuthorView.setText(post.category);
-                mTitleView.setText(post.title);
-                postLocation.setText("#" + "홍대입구역");
-//                postLocation.setText("#"+post.location);
-                postPrice.setText("#" + post.price + "천원");
-                postDate.setText(post.date);
-                postTime.setText(post.time);
-                mBodyView.setText(post.body);
-                User user = dataSnapshot.getValue(User.class);
+                tv_postCategory.setText(post.category);
+                tv_postTitle.setText(post.title);
+                //인식안되는 문제
+                tv_postLocation.setText("#"+post.location);
+                tv_postPrice.setText("#" + post.price + "천원");
+                tv_postDate.setText(post.date);
+                tv_postTime.setText(post.time);
+                tv_postBody.setText(post.body);
                 authorName = post.author;
-//                nickName = "박상우 님";
             }
 
             @Override
@@ -131,30 +116,20 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                         Toast.LENGTH_SHORT).show();
             }
         };
-        mPostReference.addValueEventListener(postListener);
-        // [END post_value_event_listener]
 
-        // Keep copy of post listener so we can remove it when app stops
-        mPostListener = postListener;
-
-        // Listen for comments
-        mAdapter = new CommentAdapter(this, mCommentsReference);
-        mCommentsRecycler.setAdapter(mAdapter);
+        return true;
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        // Remove post value event listener
         if (mPostListener != null) {
             mPostReference.removeEventListener(mPostListener);
         }
 
-        // Clean up comments listener
         mAdapter.cleanupListener();
     }
-
 
     private void postComment() {
         final String uid = getUid();
@@ -163,17 +138,15 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        String commentText = mCommentField.getText().toString();
+                        String commentText = tv_CommentText.getText().toString();
                         if (commentText != null) {
 
                             Comment comment = new Comment(uid, author, commentText);
                             mCommentsReference.push().setValue(comment);
                         } else {
-                            Toast.makeText(PostDetailActivity.this, "내용을 입력해주세요", Toast.LENGTH_SHORT);
+                            showToast("내용을 입력해주세요",false);
                         }
-
-                        // Clear the field
-                        mCommentField.setText(null);
+                        tv_CommentText.setText(null);
                     }
 
                     @Override
@@ -183,158 +156,47 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                 });
     }
 
+    void show() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("JoinClub");
+        builder.setMessage("가입하시겠습니까?");
+        builder.setPositiveButton("가입하기",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        postComment();
+                        title = tv_postTitle.getText().toString();
 
-    private static class CommentViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView authorView;
-        public TextView bodyView;
-
-        public CommentViewHolder(View itemView) {
-            super(itemView);
-
-            authorView = itemView.findViewById(R.id.commentAuthor);
-            bodyView = itemView.findViewById(R.id.commentBody);
-        }
+                        if (author == null) author = "guest 님";
+                        Intent intent = new Intent(PostDetailActivity.this, ChatActivity.class);
+                        intent.putExtra("chatName", title);
+                        intent.putExtra("AdminName", authorName);
+                        intent.putExtra("userName", author);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+        builder.setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        showToast("다음기회에",true);
+                    }
+                });
+        builder.show();
     }
 
-    private static class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
-
-        private Context mContext;
-        private DatabaseReference mDatabaseReference;
-        private ChildEventListener mChildEventListener;
-
-        private List<String> mCommentIds = new ArrayList<>();
-        private List<Comment> mComments = new ArrayList<>();
-
-        public CommentAdapter(final Context context, DatabaseReference ref) {
-            mContext = context;
-            mDatabaseReference = ref;
-
-            // Create child event listener
-            // [START child_event_listener_recycler]
-            ChildEventListener childEventListener = new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                    Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
-
-                    // A new comment has been added, add it to the displayed list
-                    Comment comment = dataSnapshot.getValue(Comment.class);
-
-                    // [START_EXCLUDE]
-                    // Update RecyclerView
-                    mCommentIds.add(dataSnapshot.getKey());
-                    mComments.add(comment);
-                    notifyItemInserted(mComments.size() - 1);
-                    // [END_EXCLUDE]
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-                    Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
-
-                    Comment newComment = dataSnapshot.getValue(Comment.class);
-                    String commentKey = dataSnapshot.getKey();
-
-                    // [START_EXCLUDE]
-                    int commentIndex = mCommentIds.indexOf(commentKey);
-                    if (commentIndex > -1) {
-                        // Replace with the new data
-                        mComments.set(commentIndex, newComment);
-
-                        // Update the RecyclerView
-                        notifyItemChanged(commentIndex);
-                    } else {
-                        Log.w(TAG, "onChildChanged:unknown_child:" + commentKey);
-                    }
-                    // [END_EXCLUDE]
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-                    Log.d(TAG, "onChildRemoved:" + dataSnapshot.getKey());
-
-                    // A comment has changed, use the key to determine if we are displaying this
-                    // comment and if so remove it.
-                    String commentKey = dataSnapshot.getKey();
-
-                    // [START_EXCLUDE]
-                    int commentIndex = mCommentIds.indexOf(commentKey);
-                    if (commentIndex > -1) {
-                        // Remove data from the list
-                        mCommentIds.remove(commentIndex);
-                        mComments.remove(commentIndex);
-
-                        // Update the RecyclerView
-                        notifyItemRemoved(commentIndex);
-                    } else {
-                        Log.w(TAG, "onChildRemoved:unknown_child:" + commentKey);
-                    }
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-                    Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
-
-                    Comment movedComment = dataSnapshot.getValue(Comment.class);
-                    String commentKey = dataSnapshot.getKey();
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            };
-            ref.addChildEventListener(childEventListener);
-            mChildEventListener = childEventListener;
-        }
-
-        @Override
-        public CommentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater inflater = LayoutInflater.from(mContext);
-            View view = inflater.inflate(R.layout.item_comment, parent, false);
-            return new CommentViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(CommentViewHolder holder, int position) {
-            Comment comment = mComments.get(position);
-            holder.authorView.setText(comment.nickName + " 님:");
-            holder.bodyView.setText(comment.text);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mComments.size();
-        }
-
-        public void cleanupListener() {
-            if (mChildEventListener != null) {
-                mDatabaseReference.removeEventListener(mChildEventListener);
-            }
-        }
-
-    }
-
-
-    @Override
+    @OnClick({R.id.btn_postJoin,R.id.btn_PostComment})
     public void onClick(View v) {
         int i = v.getId();
-
         switch (i) {
-
-            case R.id.buttonPostComment:
-
+            case R.id.btn_PostComment:
                 postComment();
                 break;
 
-            case R.id.buttonPostJoin:
-
+            case R.id.btn_postJoin:
                 // 가입된 아이디 체크 유효성 검사
-                title = mTitleView.getText().toString();
+                title = tv_postTitle.getText().toString();
 
                 if (author == null) author = "guest 님";
-//                String result = chatActivity.checkUser(author, title);
                 String result = "0";
 
                 if (result.equals("0")) {
@@ -346,39 +208,12 @@ public class PostDetailActivity extends AppCompatActivity implements View.OnClic
                     intent.putExtra("AdminName", authorName);
                     intent.putExtra("userName", author);
                     startActivity(intent);
+                    finish();
                 }else{
-                    Toast.makeText(getApplicationContext(), "코드에러", Toast.LENGTH_LONG).show();
+                    showToast("코드에러",false);
                 }
 
                 break;
         }
     }
-
-    void show() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("JoinClub");
-        builder.setMessage("가입하시겠습니까?");
-        builder.setPositiveButton("가입하기",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        postComment();
-                        title = mTitleView.getText().toString();
-
-                        if (author == null) author = "guest 님";
-                        Intent intent = new Intent(PostDetailActivity.this, ChatActivity.class);
-                        intent.putExtra("chatName", title);
-                        intent.putExtra("AdminName", authorName);
-                        intent.putExtra("userName", author);
-                        startActivity(intent);
-                    }
-                });
-        builder.setNegativeButton("취소",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "다음기회에", Toast.LENGTH_LONG).show();
-                    }
-                });
-        builder.show();
-    }
-
 }

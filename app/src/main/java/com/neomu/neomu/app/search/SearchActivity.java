@@ -113,7 +113,7 @@ public class SearchActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.main_navigationview4);
 
         View view = navigationView.getHeaderView(0);
-        navi_id = (TextView)view.findViewById(R.id.navi_id);
+        navi_id = (TextView)view.findViewById(R.id.tv_naviId);
         navi_id.setText(nick);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -123,13 +123,11 @@ public class SearchActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.first:
                         intent = new Intent(SearchActivity.this, MainActivity.class);
-                        intent.putExtra("nickName",nick);
                         startActivity(intent);
                         drawerLayout1.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.second:
                         intent = new Intent(SearchActivity.this, MypageActivity.class);
-                        intent.putExtra("nickName",nick);
                         startActivity(intent);
                         drawerLayout1.closeDrawer(GravityCompat.START);
                         break;
@@ -139,7 +137,6 @@ public class SearchActivity extends AppCompatActivity {
                         break;
                     case R.id.fourth:
                         intent = new Intent(SearchActivity.this, MapyActivity.class);
-                        intent.putExtra("nickName",nick);
                         startActivity(intent);
                         break;
                     case R.id.fifth:

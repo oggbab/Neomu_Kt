@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <include layout="@layout/tool_bar" />
+            <include layout="@layout/tb_main" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -104,7 +104,7 @@
 
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/main_navigationview"
+        android:id="@+id/nv_main"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

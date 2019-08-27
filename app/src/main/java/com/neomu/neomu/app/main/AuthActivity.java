@@ -1,4 +1,4 @@
-package com.neomu.neomu.app.index;
+package com.neomu.neomu.app.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,8 +29,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AuthActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
-
-    @BindView(R.id.main_auth_btn) Button main_auth_btn;
 
     private static final int RC_SIGN_IN = 1000;
     private FirebaseAuth mAuth;
@@ -80,7 +78,7 @@ public class AuthActivity extends BaseActivity implements GoogleApiClient.OnConn
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(!task.isSuccessful()){
-                        Toast.makeText(AuthActivity.this, "인증 실패", Toast.LENGTH_SHORT).show();
+                        showToast("인증 실패",false);
                     }else{
                         Intent intent = new Intent(AuthActivity.this,MainActivity.class);
                         startActivity(intent);
@@ -94,13 +92,13 @@ public class AuthActivity extends BaseActivity implements GoogleApiClient.OnConn
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
 
-    @OnClick({R.id.main_auth_btn,R.id.main_auth_btn_google})
+    @OnClick({R.id.btn_auth_join,R.id.btn_auth_google})
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.main_auth_btn:
+            case R.id.btn_auth_join:
                 Intent intent = new Intent(AuthActivity.this,JoinActivity.class);
                 startActivity(intent);
-            case R.id.main_auth_btn_google:
+            case R.id.btn_auth_google:
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                 startActivityForResult(signInIntent,RC_SIGN_IN);
         }

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.index.SpalshActivity"
+    tools:context=".app.main.SpalshActivity"
     android:background="#6981EC"
-    android:id="@+id/splash">
+    android:id="@+id/rel_splash">
 
 <!--프리뷰랑 실제 화면이랑 차이 있음(마진)-->
     <RelativeLayout
@@ -14,10 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
         <ImageView
-            android:id="@+id/image_logo"
+            android:id="@+id/iv_logo"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/iv_logo"
             android:layout_centerHorizontal="true"
             />
 
@@ -25,7 +25,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/image_logo"
+            android:layout_below="@id/iv_logo"
             android:text="너\u0026무"
             android:textSize="50dp"
             android:textColor="#ffffff"

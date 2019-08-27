@@ -7,7 +7,7 @@
     >
 
     <TextView
-        android:id="@+id/postTitle"
+        android:id="@+id/tv_postTitle"
         style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         tools:text="독립 영화 보러가요" />
 
     <TextView
-        android:id="@+id/postBody"
+        android:id="@+id/tv_postBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-20dp"

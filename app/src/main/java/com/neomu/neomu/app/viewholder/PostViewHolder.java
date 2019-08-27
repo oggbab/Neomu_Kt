@@ -9,43 +9,36 @@ import com.neomu.neomu.app.models.Post;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PostViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView titleView;
-    public TextView categoryView;
-    public ImageView starView;
-    public TextView numStarsView;
-    public TextView bodyView;
-    TextView postPrice,postPeople,postLocation,postDate,postTime;
+    @BindView(R.id.tv_postTitle) TextView tv_postTitle;
+    @BindView(R.id.tv_postCategory) TextView tv_postCategory;
+    @BindView(R.id.iv_star) ImageView iv_star;
+    @BindView(R.id.tv_postNumStars) TextView tv_postNumStars;
+    @BindView(R.id.tv_postBody) TextView tv_postBody;
+    @BindView(R.id.tv_postPrice) TextView tv_postPrice;
+    @BindView(R.id.tv_postDate) TextView tv_postDate;
+    @BindView(R.id.tv_postTime) TextView tv_postTime;
+    @BindView(R.id.tv_postLocation) TextView tv_postLocation;
 
     public PostViewHolder(View itemView) {
         super(itemView);
-
-        titleView = itemView.findViewById(R.id.postTitle);
-        categoryView = itemView.findViewById(R.id.postCategory);
-        starView = itemView.findViewById(R.id.star);
-        numStarsView = itemView.findViewById(R.id.postNumStars);
-        bodyView = itemView.findViewById(R.id.postBody);
-        postPrice = itemView.findViewById(R.id.postPrice);
-//        postPeople = itemView.findViewById(R.id.postPeople);
-        postLocation = itemView.findViewById(R.id.postLocation);
-
-        postDate = itemView.findViewById(R.id.postDate);
-        postTime = itemView.findViewById(R.id.postTime);
+        ButterKnife.bind(this,itemView);
     }
 
     public void bindToPost(Post post, View.OnClickListener starClickListener) {
-        titleView.setText(post.title);
-        numStarsView.setText(String.valueOf(post.likeCount));
-        bodyView.setText(post.body);
+        tv_postTitle.setText(post.title);
+        tv_postNumStars.setText(String.valueOf(post.likeCount));
+        tv_postBody.setText(post.body);
+        tv_postPrice.setText("#"+post.price+"천원");
+        tv_postLocation.setText("#"+"홍대입구역");
+        tv_postDate.setText(post.date);
+        tv_postTime.setText(post.time);
+        tv_postCategory.setText(post.category);
 
-        postPrice.setText("#"+post.price+"천원");
-//        postPeople.setText(post.people);
-        postLocation.setText("#"+"홍대입구역");
-        postDate.setText(post.date);
-        postTime.setText(post.time);
-        categoryView.setText(post.category);
-
-        starView.setOnClickListener(starClickListener);
+        iv_star.setOnClickListener(starClickListener);
     }
 }

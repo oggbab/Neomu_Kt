@@ -1,4 +1,4 @@
-package com.neomu.neomu.app.index;
+package com.neomu.neomu.app.main;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,7 +29,7 @@ public class SpalshActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spalsh);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        relativeLayout = findViewById(R.id.splash);
+        relativeLayout = findViewById(R.id.rel_splash);
         firebaseRemoteControll();
     }
 
@@ -76,4 +76,5 @@ public class SpalshActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }

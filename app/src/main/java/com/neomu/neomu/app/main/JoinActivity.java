@@ -1,4 +1,4 @@
-package com.neomu.neomu.app.index;
+package com.neomu.neomu.app.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.club.MainActivity;
-import com.neomu.neomu.app.index.util.JoinValidation;
+import com.neomu.neomu.app.main.util.JoinValidation;
 import com.neomu.neomu.app.models.User;
 import com.neomu.neomu.common.activity.BaseActivity;
 

@@ -1,4 +1,4 @@
-package com.neomu.neomu.app.index.util;
+package com.neomu.neomu.app.main.util;
 
 import android.text.TextUtils;
 import android.view.View;

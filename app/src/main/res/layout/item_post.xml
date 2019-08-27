@@ -27,7 +27,7 @@
             android:layout_alignParentLeft="true" />
 
         <LinearLayout
-            android:id="@+id/starLayout"
+            android:id="@+id/lin_starLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/postAuthorLayout"
@@ -37,7 +37,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/star"
+                android:id="@+id/iv_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -46,7 +46,7 @@
                 android:src="@drawable/ic_like" />
 
             <TextView
-                android:id="@+id/postNumStars"
+                android:id="@+id/tv_postNumStars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"

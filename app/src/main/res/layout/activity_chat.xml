@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout3"
+    android:id="@+id/drawer_chat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#012038"
@@ -38,7 +38,7 @@
             android:background="#000000" />
 
         <TextView
-            android:id="@+id/chat_title_txt"
+            android:id="@+id/et_chatTitle"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="50dp"
@@ -60,7 +60,7 @@
                 android:layout_weight="1">
 
                 <ListView
-                    android:id="@+id/chat_view"
+                    android:id="@+id/lv_chatView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -77,7 +77,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/chat_edit"
+                    android:id="@+id/et_chatEdit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -89,7 +89,7 @@
                     android:textSize="12sp" />
 
                 <Button
-                    android:id="@+id/chat_sent"
+                    android:id="@+id/btn_chatSent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -104,7 +104,7 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/main_navigationview"
+        android:id="@+id/nv_main"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

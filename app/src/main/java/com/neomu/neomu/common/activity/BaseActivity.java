@@ -7,6 +7,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class BaseActivity extends AppCompatActivity  {
 
     @Override
@@ -26,6 +28,9 @@ public class BaseActivity extends AppCompatActivity  {
         super.onBackPressed();
     }
 
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
 
     protected void showToast(String msg, boolean isShort) {
         if(isShort) {

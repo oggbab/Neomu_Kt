@@ -1,4 +1,4 @@
-package com.neomu.neomu.app.index;
+package com.neomu.neomu.app.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.club.MainActivity;
-import com.neomu.neomu.app.index.util.JoinValidation;
+import com.neomu.neomu.app.main.util.JoinValidation;
 import com.neomu.neomu.common.activity.BaseActivity;
 
 import butterknife.BindView;
@@ -29,8 +29,6 @@ public class LoginActivity extends BaseActivity{
 
     @BindView(R.id.login_id) EditText login_id;
     @BindView(R.id.login_pw) EditText login_pw;
-    @BindView(R.id.login_btn) Button login_btn;
-    @BindView(R.id.main_linkText) TextView main_linkText;
     public final String MSG_SIGNIN_FAIL = "로그인 실패";
 
     @Override
@@ -40,6 +38,17 @@ public class LoginActivity extends BaseActivity{
 
         ButterKnife.bind(this);
         firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    //동일한 액티비티 재실행될경우(백버튼이든) 실행됨
+    //startActivityForResult()나 finish() 사용할 경우 실행안됨
+    //activity를 전체 로드하지않고 필요기능만 사용가능한 장점
+    //
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String msg_newIntent = intent.getStringExtra("logTest");
+        showToast(msg_newIntent,true);
     }
 
     @OnClick({R.id.login_btn, R.id.main_linkText})
@@ -69,7 +78,10 @@ public class LoginActivity extends BaseActivity{
                 });
                 case R.id.main_linkText:
                     Intent intent = new Intent(LoginActivity.this, AuthActivity.class);
+                    intent.putExtra("logTest","onNewIntent()실행됨");
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
         }
     }
+
 }

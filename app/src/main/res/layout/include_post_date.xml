@@ -7,10 +7,8 @@
     android:gravity="right"
     >
 
-
-
     <TextView
-        android:id="@+id/postDate"
+        android:id="@+id/tv_postDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -22,7 +20,7 @@
         />
 
     <TextView
-        android:id="@+id/postTime"
+        android:id="@+id/tv_postTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -34,7 +32,5 @@
         style="style/club_new_title"
         android:textColor="#B5B5B5"
         />
-
-
 
 </LinearLayout>

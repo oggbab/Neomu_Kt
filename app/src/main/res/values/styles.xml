@@ -12,7 +12,7 @@
     </style>
 
     <!--메인 타이틀-->
-    <style name="main_title">
+    <style name="tv_auth_title">
         <item name="android:text">너\u0026무</item>
         <item name="android:fontFamily" tools:ignore="NewApi">@font/serif_b</item>
         <item name="android:textSize">50sp</item>

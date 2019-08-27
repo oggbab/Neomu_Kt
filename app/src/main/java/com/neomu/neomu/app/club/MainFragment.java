@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,49 +21,55 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
-import com.neomu.neomu.NickName;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.models.Post;
 import com.neomu.neomu.app.viewholder.PostViewHolder;
+import com.neomu.neomu.common.activity.fragment.BaseFragment;
 
-public class MainFragment extends Fragment {
+import butterknife.ButterKnife;
 
-    private static final String TAG = "MainFragment";
+public class MainFragment extends BaseFragment {
 
-    // [START define_database_reference]
-    private DatabaseReference mDatabase;
-    // [END define_database_reference]
+    private DatabaseReference mDatabaseReference;
+    private FirebaseRecyclerAdapter<Post, PostViewHolder> mFireBaseRecyclerAdapter;
+    private RecyclerView rv_main;
+    private LinearLayoutManager mLinearLayoutManager;
+    FloatingActionButton btn_fa;
 
-    private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
-    private RecyclerView mRecycler;
-    private LinearLayoutManager mManager;
-    FloatingActionButton fabNewPost;
     public MainFragment() {}
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_2_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        ButterKnife.bind(this,rootView);
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         // db가져오기
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
         //사이클뷰 세팅
-        mRecycler = rootView.findViewById(R.id.messagesList1);
-        mRecycler.setHasFixedSize(true);
+        rv_main = view.findViewById(R.id.rv_main);
+        rv_main.setHasFixedSize(true);
 
         //플로팅액션버튼 세팅
-        fabNewPost = rootView.findViewById(R.id.fabNewPost);
-        fabNewPost.setOnClickListener(new View.OnClickListener() {
+        btn_fa = view.findViewById(R.id.btn_fa);
+        btn_fa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),Club_New_Activity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
 
-        return rootView;
     }
 
     @Override
@@ -71,13 +77,13 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         // 레이아웃 매니저
-        mManager = new LinearLayoutManager(getActivity());
-        mManager.setReverseLayout(true);
-        mManager.setStackFromEnd(true);
-        mRecycler.setLayoutManager(mManager);
+        mLinearLayoutManager = new LinearLayoutManager(getActivity());
+        mLinearLayoutManager.setReverseLayout(true);
+        mLinearLayoutManager.setStackFromEnd(true);
+        rv_main.setLayoutManager(mLinearLayoutManager);
 
         // 해당 쿼리 가져오기
-        Query postsQuery = getQuery(mDatabase);
+        Query postsQuery = getQuery(mDatabaseReference);
 
         //쿼리로 세팅
         FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Post>()
@@ -85,7 +91,7 @@ public class MainFragment extends Fragment {
                 .build();
 
         //어뎁터 뷰홀더 설정
-        mAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(options) {
+        mFireBaseRecyclerAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(options) {
 
             @Override
             public PostViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -102,29 +108,27 @@ public class MainFragment extends Fragment {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Launch MyDetailActivity
-
-                        Intent intent3 = new Intent(getActivity(), PostDetailActivity.class);
-                        intent3.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
-                        intent3.putExtra("nickName",NickName.getNick());
-                        startActivity(intent3);
+                        Intent intent = new Intent(getActivity(), PostDetailActivity.class);
+                        intent.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
                 });
 
                 // 좋아요 클릭하면 이미지 변경
-                if (model.like.containsKey(getUid())) {
-                    viewHolder.starView.setImageResource(R.drawable.ic_like_on);
+                //todo 버터나이프로 인한 에러인듯
+/*                if (model.like.containsKey(getUid())) {
+                    viewHolder.iv_star.setImageResource(R.drawable.ic_like_on);
                 } else {
                     viewHolder.starView.setImageResource(R.drawable.ic_like);
-                }
+                }*/
 
-                // Bind Post to ViewHolder, setting OnClickListener for the star button
                 viewHolder.bindToPost(model, new View.OnClickListener() {
                     @Override
                     public void onClick(View starView) {
                         // Need to write to both places the post is stored
-                        DatabaseReference globalPostRef = mDatabase.child("posts").child(postRef.getKey());
-                        DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.uid).child(postRef.getKey());
+                        DatabaseReference globalPostRef = mDatabaseReference.child("posts").child(postRef.getKey());
+                        DatabaseReference userPostRef = mDatabaseReference.child("user-posts").child(model.uid).child(postRef.getKey());
 
                         // Run two transactions
                         onStarClicked(globalPostRef);
@@ -133,7 +137,7 @@ public class MainFragment extends Fragment {
                 });
             }
         };
-        mRecycler.setAdapter(mAdapter);
+        rv_main.setAdapter(mFireBaseRecyclerAdapter);
     }
 
     // 좋아요 클릭했을때
@@ -166,27 +170,20 @@ public class MainFragment extends Fragment {
         });
     }
 
-    //생명주기
     @Override
     public void onStart() {
         super.onStart();
-        if (mAdapter != null) {
-            mAdapter.startListening();
+        if (mFireBaseRecyclerAdapter != null) {
+            mFireBaseRecyclerAdapter.startListening();
         }
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (mAdapter != null) {
-            mAdapter.stopListening();
+        if (mFireBaseRecyclerAdapter != null) {
+            mFireBaseRecyclerAdapter.stopListening();
         }
     }
-
-    public String getUid() {
-        return FirebaseAuth.getInstance().getCurrentUser().getUid();
-    }
-
-    public Query getQuery(DatabaseReference databaseReference){return databaseReference;}
 
 }
