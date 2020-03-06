@@ -3,9 +3,7 @@ package com.neomu.neomu.app.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -16,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.neomu.neomu.R;
 import com.neomu.neomu.app.club.MainActivity;
 import com.neomu.neomu.app.main.util.JoinValidation;
-import com.neomu.neomu.common.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

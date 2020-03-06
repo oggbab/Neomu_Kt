@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app.main.SpalshActivity"
+    android:background="#6981EC"
+    android:id="@+id/rel_splash">
+
+<!--프리뷰랑 실제 화면이랑 차이 있음(마진)-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/iv_logo"
+            android:layout_centerHorizontal="true"
+            />
+
+         <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_logo"
+            android:text="너\u0026무"
+            android:textSize="50dp"
+            android:textColor="#ffffff"
+             android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:text="[너는.모르는.무언가]"
+            android:fontFamily="@font/serif_r"
+            android:textSize="15dp"
+            android:textColor="#ffffff"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

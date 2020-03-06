@@ -29,7 +29,6 @@ import com.neomu.neomu.app.map.MapyActivity;
 import com.neomu.neomu.app.models.User;
 import com.neomu.neomu.app.mypage.MypageActivity;
 import com.neomu.neomu.app.search.SearchActivity;
-import com.neomu.neomu.common.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

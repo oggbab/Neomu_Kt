@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,7 +30,6 @@ import com.neomu.neomu.app.club.Club_New_Activity;
 import com.neomu.neomu.app.club.MainActivity;
 import com.neomu.neomu.app.map.MapyActivity;
 import com.neomu.neomu.app.mypage.MypageActivity;
-import com.neomu.neomu.common.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

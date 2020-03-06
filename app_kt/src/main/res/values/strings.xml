@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">너\u0026무</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!--Splash Activity-->
+    <string name="text_splash_btn_text">확인</string>
+
+    <!--Login Activity-->
+    <string name="text_login_toast_checkIdPw">계정과 비밀번호를 확인해주세요</string>
+    <string name="text_login_toast_checkAll">모두 입력해주세요</string>
+    <string name="default_web_client_id"></string>
+
+</resources>

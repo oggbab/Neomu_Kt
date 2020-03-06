@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/bg" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/postAuthorLayout"
+                    layout="@layout/include_post_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true" />
+
+
+                <include
+                    android:id="@+id/postTextLayout"
+                    layout="@layout/include_post_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/postAuthorLayout"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="-10dp" />
+
+
+                <!--소개-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <include
+                        layout="@layout/include_post_infor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:layout_below="@+id/postAuthorLayout" />
+
+                    <include
+                        layout="@layout/include_post_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/postAuthorLayout"
+                        android:layout_alignParentLeft="true"
+                        android:layout_weight="0.3"
+                        android:layout_marginTop="2dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#B5B5B5" />
+
+        <LinearLayout
+            android:id="@+id/scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_postDetail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/commentForm"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                tools:listitem="@layout/item_comment" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#B5B5B5" />
+
+
+        <LinearLayout
+            android:id="@+id/commentForm"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/postTextLayout"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/tv_CommentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:hint="문의 글을 달아주세요"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:layout_weight="0.8"
+                android:textColorHint="#B5B5B5" />
+
+            <Button
+                android:id="@+id/btn_postJoin"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_btn"
+                android:backgroundTint="#FBCE02"
+                android:text="Join"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btn_PostComment"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/round_btn"
+                android:text="Ask"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--참여중인-->
+    <LinearLayout
+        android:id="@+id/mypage_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+            <include
+                android:id="@+id/postAuthorLayout"
+                layout="@layout/include_post_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true" />
+
+            <include
+                android:id="@+id/postTextLayout"
+                layout="@layout/include_post_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/postAuthorLayout"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="-10dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:orientation="horizontal">
+
+
+            <!--칩스-->
+            <TextView
+                android:id="@+id/post_chip_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/check_background"
+                android:fontFamily="@font/sans_r"
+                android:text="#1만원"
+                android:textSize="10sp"
+                android:textColor="#B5B5B5" />
+
+            <TextView
+                android:id="@+id/post_chip_locattion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/check_background"
+                android:fontFamily="@font/sans_r"
+                android:textSize="10sp"
+                android:text="#홍대입구역"
+                android:textColor="#B5B5B5" />
+
+            <TextView
+                android:id="@+id/post_chip_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/check_background"
+                android:fontFamily="@font/sans_r"
+                android:textSize="10sp"
+                android:text="#3명"
+                android:textColor="#B5B5B5" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg" />
+
+        <Button
+            android:id="@+id/mypage_in_btn"
+            style="@style/main_loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/round_btn"
+            android:text="모임방 가기" />
+
+    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/container2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/tabs2"
+        android:layout_marginTop="275dp" />
+
+</LinearLayout>

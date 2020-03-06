@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--에디트텍스트 스타일만, 폰트는 style.xml-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:shape="rectangle" >
+
+    <size android:height="80dp"/>
+    <corners android:radius="10dp"/>
+    <stroke
+        android:width="2dp"
+        android:color="#4E536B" />
+</shape>

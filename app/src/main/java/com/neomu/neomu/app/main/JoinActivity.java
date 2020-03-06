@@ -23,7 +23,6 @@ import com.neomu.neomu.R;
 import com.neomu.neomu.app.club.MainActivity;
 import com.neomu.neomu.app.main.util.JoinValidation;
 import com.neomu.neomu.app.models.User;
-import com.neomu.neomu.common.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,14 +30,14 @@ import butterknife.OnClick;
 
 public class JoinActivity extends BaseActivity  {
 
-    @BindView(R.id.main_join_nickName) EditText nickName;
-    @BindView(R.id.main_join_email) EditText email;
-    @BindView(R.id.main_join_pw) EditText pw;
-    @BindView(R.id.main_join_pw2) EditText pw2;
+    @BindView(R.id.tv_join_nickName) EditText nickName;
+    @BindView(R.id.tv_join_email) EditText email;
+    @BindView(R.id.tv_join_pw) EditText pw;
+    @BindView(R.id.tv_join_pw2) EditText pw2;
     @BindView(R.id.picker_year) NumberPicker picker_year;
     @BindView(R.id.picker_month) NumberPicker picker_month;
-    @BindView(R.id.join_gender) RadioGroup rg;
-    @BindView(R.id.male) RadioButton rBtn_male;
+    @BindView(R.id.rg_join_gender) RadioGroup rg;
+    @BindView(R.id.rb_male) RadioButton rBtn_male;
 
     RadioButton selectedRdo;
     String gender;
@@ -102,10 +101,10 @@ public class JoinActivity extends BaseActivity  {
         picker_month.setMaxValue(12);
     }
 
-    @OnClick (R.id.main_join_btn)
+    @OnClick (R.id.btn_join)
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.main_join_btn:
+            case R.id.btn_join:
                 //유효성 검사
                 //static 제거
                 new JoinValidation().isValidation(email, nickName, pw, pw2, new JoinValidation.ValidationListener() {

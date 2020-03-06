@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- splash 화면 기본 컨픽 caps는 팝업여부 -->
+<defaultsMap>
+    <entry>
+        <key>Splash_background</key>
+        <value>#6981EC</value>
+    </entry>
+    <entry>
+        <key>Splash_message_caps</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>Splash_message</key>
+        <value>작업중이에요</value>
+    </entry>
+</defaultsMap>
