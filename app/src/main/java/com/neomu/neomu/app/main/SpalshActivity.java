@@ -22,12 +22,14 @@ import com.neomu.neomu.R;
 public class SpalshActivity extends AppCompatActivity {
 
     private RelativeLayout relativeLayout;
+//    relativeLayout = findViewById(R.id.rel_splash);
+
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spalsh);
+        setContentView(R.layout.activity_splash);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         relativeLayout = findViewById(R.id.rel_splash);
         firebaseRemoteControll();
@@ -40,7 +42,7 @@ public class SpalshActivity extends AppCompatActivity {
                 .setDeveloperModeEnabled(BuildConfig.DEBUG)
                 .build();
         mFirebaseRemoteConfig.setConfigSettings(configSettings);
-        mFirebaseRemoteConfig.setDefaults(R.xml.default_config);
+        mFirebaseRemoteConfig.setDefaults(R.xml.default_config_firebase);
 
         mFirebaseRemoteConfig.fetch(0)
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {

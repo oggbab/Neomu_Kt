@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NeoMu</string>
+    <string name="app_name">너\u0026무</string>
     <string name="title_activity_maps">Map</string>
 
     <!--Splash Activity-->

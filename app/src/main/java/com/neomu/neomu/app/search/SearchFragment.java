@@ -104,9 +104,9 @@ public class SearchFragment extends Fragment {
 
                 // Determine if the current user has liked this post and set UI accordingly
                 if (model.like.containsKey(getUid())) {
-                    viewHolder.starView.setImageResource(R.drawable.ic_like_on);
+//                    viewHolder.starView.setImageResource(R.drawable.ic_like_on);
                 } else {
-                    viewHolder.starView.setImageResource(R.drawable.ic_like);
+//                    viewHolder.starView.setImageResource(R.drawable.ic_like);
                 }
 
                 // Bind Post to ViewHolder, setting OnClickListener for the star button

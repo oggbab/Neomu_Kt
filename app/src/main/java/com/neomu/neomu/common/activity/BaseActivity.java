@@ -17,27 +17,12 @@ public class BaseActivity extends AppCompatActivity  {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-
-    //back버튼 리스터
-    @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
-    }
-
-    protected void showToast(String msg, boolean isShort) {
-        if(isShort) {
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-        }
     }
 
 }
